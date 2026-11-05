@@ -1,0 +1,11 @@
+# Netlify is used only for preview links on pull requests.
+# The live site (heleo.space) stays on cPanel.
+[build]
+  publish = "site"
+  command = "echo 'static site, no build step'"
+
+# Keep previews out of search engines.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

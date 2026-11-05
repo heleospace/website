@@ -1,0 +1,11 @@
+# Not part of this site; never commit it here.
+site/token/
+# Temporary diagnostics and local files
+_tools/
+mailtest.php
+__pycache__/
+*.zip
+.DS_Store
+.ftp-deploy-sync-state.json
+# Private local notes
+CLAUDE.local.md
