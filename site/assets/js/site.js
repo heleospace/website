@@ -27,13 +27,39 @@
   }, { rootMargin: '0px 0px -8% 0px' }) : null;
   document.querySelectorAll('.reveal').forEach(function (el) { io ? io.observe(el) : el.classList.add('in'); });
 
-  // Hero video: pause control, and respect reduced motion
-  var vid = document.querySelector('.hero video');
+  // Hero video: rotates between clips, with a pause control. Respects reduced motion and data saver.
+  var vids = [].slice.call(document.querySelectorAll('.hero video'));
   var vbtn = document.querySelector('[data-video-toggle]');
-  if (vid) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { vid.removeAttribute('autoplay'); vid.pause(); if (vbtn) vbtn.textContent = 'Play video'; }
+  var vcap = document.querySelector('[data-video-caption]');
+  if (vids.length) {
+    var current = 0, switching = false, heldByUser = false;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    var rotates = vids.length > 1 && !reduced && !saveData;
+    if (reduced) { vids[0].removeAttribute('autoplay'); vids[0].pause(); heldByUser = true; if (vbtn) vbtn.textContent = 'Play video'; }
+
+    // The next clip only fades in once it is really playing, so a slow download never shows a blank hero.
+    var rotate = function () {
+      switching = true;
+      var from = vids[current], nextIndex = (current + 1) % vids.length, next = vids[nextIndex];
+      next.currentTime = 0;
+      Promise.resolve(next.play()).then(function () {
+        if (heldByUser) { next.pause(); switching = false; return; }
+        next.classList.add('is-on');
+        from.classList.remove('is-on');
+        current = nextIndex;
+        if (vcap && next.dataset.caption) vcap.textContent = next.dataset.caption;
+        setTimeout(function () { from.pause(); switching = false; }, 1200);
+      }).catch(function () { rotates = false; switching = false; });
+    };
+    if (rotates) vids.forEach(function (v) {
+      v.addEventListener('timeupdate', function () {
+        if (rotates && !switching && v === vids[current] && v.currentTime >= Number(v.dataset.hold)) rotate();
+      });
+    });
     if (vbtn) vbtn.addEventListener('click', function () {
-      if (vid.paused) { vid.play(); vbtn.textContent = 'Pause video'; } else { vid.pause(); vbtn.textContent = 'Play video'; }
+      var v = vids[current];
+      if (v.paused) { heldByUser = false; v.play(); vbtn.textContent = 'Pause video'; } else { heldByUser = true; v.pause(); vbtn.textContent = 'Play video'; }
     });
   }
 

@@ -188,15 +188,18 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
             "Heleospace builds orbital data centers that run as an autonomous economy: compute in orbit and on the ground that finds work, agrees a price and settles on its own.", "/") + header("/") + f"""
 <main id="main">
 <section class="hero on-night">
-  <video autoplay muted loop playsinline preload="metadata" poster="{M['hero_poster']}" aria-hidden="true">
+  <video class="is-on" autoplay muted loop playsinline preload="metadata" poster="{M['hero_poster']}" aria-hidden="true" data-hold="20" data-caption="Earth&#8217;s limb from the International Space Station · NASA">
     <source src="{M['hero_webm']}" type="video/webm">
+  </video>
+  <video class="hero-launch" muted loop playsinline preload="none" aria-hidden="true" data-hold="18" data-caption="Artemis II liftoff, seen from Banana Creek · NASA">
+    <source src="/assets/media/hero-launch.mp4" type="video/mp4">
   </video>
   <div class="wrap">
     <p class="eyebrow">Heleospace</p>
     <h1 class="display">Orbital data centers, run as an autonomous economy.</h1>
     <p class="lede">Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Helios Mesh.</p>
     <div class="btns"><a class="btn primary" href="/mesh/"><span class="arrow">How the Mesh works</span></a><a class="btn" href="/updates/">Latest updates</a></div>
-    <div class="hero-meta"><span>Earth&#8217;s limb from the International Space Station · NASA</span><button type="button" data-video-toggle>Pause video</button></div>
+    <div class="hero-meta"><span data-video-caption>Earth&#8217;s limb from the International Space Station · NASA</span><button type="button" data-video-toggle>Pause video</button></div>
   </div>
 </section>
 
@@ -638,6 +641,7 @@ write("/legal/", head("Legal & privacy", "Legal notice and privacy for heleo.spa
 
 CREDITS = [
   ("Earth's limb with clouds, HD Earth Views (home hero video)", "NASA Scientific Visualization Studio / ISS and Space Shuttle crews", "Public domain (NASA)", "https://svs.gsfc.nasa.gov/10766"),
+  ("Artemis II liftoff from Banana Creek (home hero video; trimmed, mirrored and darkened)", "NASA", "NASA media usage guidelines", "https://images.nasa.gov/details/KSC-20260401-MH-CSH01-0002-Artemis_II_Launch_Banana_Creek-M19183.mp4"),
   ("ISS stills: aurora, star trails, city lights", "NASA Scientific Visualization Studio / ISS crew", "Public domain (NASA)", "https://svs.gsfc.nasa.gov/11474"),
   ("Orbital sunrise, iss066e152098", "NASA", "Public domain (NASA)", "https://www.nasa.gov/image-article/first-rays-of-an-orbital-sunrise-illuminate-earths-atmosphere-4"),
   ("The sun's first rays above Earth's limb, iss059e027932", "NASA", "Public domain (NASA)", "https://www.nasa.gov/image-detail/the-suns-first-rays-peek-above-earths-limb-46976234625-o"),
