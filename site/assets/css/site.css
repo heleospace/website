@@ -77,8 +77,8 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
 .hero video{opacity:0;transition:opacity 1.2s ease}
 .hero video.is-on{opacity:1}
 /* Mirrored so the rocket rises clear of the headline; darkened so the text stays readable. */
-.hero video.hero-launch{transform:scaleX(-1);filter:brightness(.62)}
-@media (max-aspect-ratio:1/1){.hero video.hero-launch{object-position:17% 50%;filter:brightness(.48)}}
+.hero video.hero-launch{transform:scaleX(-1);filter:brightness(.734)}
+@media (max-aspect-ratio:1/1){.hero video.hero-launch{object-position:17% 50%;filter:brightness(.636)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.55) 0%,rgba(7,8,10,.15) 35%,rgba(7,8,10,.65) 72%,rgba(7,8,10,.95) 100%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(56px,9vh,112px);padding-top:calc(var(--header-h) + 40px)}
 .hero h1{max-width:15ch}
