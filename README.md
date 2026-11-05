@@ -7,6 +7,7 @@ Source for [heleo.space](https://heleo.space), the Heleospace company website. I
 | Path | What it is |
 |---|---|
 | `_build/build.py` | Page text, header, footer and nav. Generates the HTML in `site/`. |
+| `_build/brand_assets.py` | Makes every logo file, favicon and the brand kit zip from `_build/brand/heleospace-logo-source.svg`. |
 | `site/` | The web root. Generated HTML plus the hand-written files below. |
 | `site/assets/` | Stylesheet, JavaScript and images (hand-written). |
 | `site/contact/*.php` | Contact form handler and human check (hand-written). |
@@ -51,6 +52,10 @@ Edit `_build/build.py`, run `python3 _build/build.py`, and commit both `_build/`
 2. Add the file name (without `.md`) to `site/updates/posts.json`.
 
 The post appears on the home page (latest 3) and at /updates/, newest first. Add `draft: true` to hide a post.
+
+## Logo
+
+To change the logo, replace `_build/brand/heleospace-logo-source.svg`, then run `python3 _build/brand_assets.py` and `python3 _build/build.py`. PNG files are rendered with Google Chrome. If the logo's proportions change, update the size in `LOGO` in `_build/build.py` and in `site/assets/css/site.css`.
 
 ## Media
 
