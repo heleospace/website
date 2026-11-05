@@ -5,6 +5,7 @@ _tools/
 mailtest.php
 __pycache__/
 *.zip
+!site/assets/brand/heleospace-brand-kit.zip
 .DS_Store
 .ftp-deploy-sync-state.json
 # Private local notes

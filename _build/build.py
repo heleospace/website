@@ -49,6 +49,9 @@ NAV = [
   ("Updates", "/updates/"),
 ]
 
+# The logo files come from _build/brand_assets.py. Size and colour are set in site.css.
+LOGO = '<svg class="logo" viewBox="0 0 1429.45 217.87" aria-hidden="true"><use href="/assets/img/logo-sprite.svg#logo"/></svg>'
+
 def head(title, desc, path, extra=""):
     full = title if title.startswith("Heleospace") else f"{title} · Heleospace"
     return f"""<!doctype html>
@@ -102,7 +105,7 @@ def header(path):
     links = "".join(parts)
     return f"""<header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Heleospace home"><svg class="mark" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M90 0h820a90 90 0 0 1 90 90v820a90 90 0 0 1-90 90H90a90 90 0 0 1-90-90V90A90 90 0 0 1 90 0ZM170 175v360l660-245V175ZM170 715v110h660V470Z"/></svg><span>Heleospace</span></a>
+    <a class="brand" href="/" aria-label="Heleospace home">{LOGO}</a>
     <nav class="nav" aria-label="Main">{links}</nav>
     <a class="btn header-cta" href="/contact/">Contact</a>
     <button class="menu-btn" aria-expanded="false" aria-label="Open menu">Menu</button>
@@ -115,10 +118,10 @@ def footer():
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a class="brand" href="/"><svg class="mark" viewBox="0 0 1000 1000" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M90 0h820a90 90 0 0 1 90 90v820a90 90 0 0 1-90 90H90a90 90 0 0 1-90-90V90A90 90 0 0 1 90 0ZM170 175v360l660-245V175ZM170 715v110h660V470Z"/></svg><span>Heleospace</span></a>
+        <a class="brand" href="/" aria-label="Heleospace home">{LOGO}</a>
         <p>Orbital data centers, run as an autonomous economy.</p>
       </div>
-      <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
       <div><h4>Technology</h4><ul><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/research/">Research</a></li></ul></div>
       <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul><li><a href="{X_URL}" rel="noopener">X</a></li><li><a href="{LINKEDIN_URL}" rel="noopener">LinkedIn</a></li><li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
@@ -655,6 +658,136 @@ rows = "".join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td><td><a href="{d}" rel="
 write("/credits/", head("Image credits", "Credits for photos and video on heleo.space.", "/credits/") + header("/credits/")
       + """<div style="height:var(--header-h)"></div>""" + article(f"<h1 class='display' style='font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:48px'>Image credits</h1><h2 id='list'>Photos and video</h2><p>All media on this site are real photographs and footage, used under public-domain or free licences. NASA material does not imply NASA endorsement.</p><div class='table-wrap'><table><tr><th>Media</th><th>By</th><th>Licence</th><th></th></tr>{rows}</table></div>",
       [("list", "Photos and video")], '<a class="btn" href="/">Home</a>') + footer())
+
+# ---------------- BRAND KIT ----------------
+KIT = "/assets/brand/heleospace-"
+LOGO_BLACK, LOGO_WHITE = KIT + "logo-black.svg", KIT + "logo-white.svg"
+
+def bk_head(id_, num, title, text):
+    return f'<div class="bk-head" id="{id_}"><div><span class="bk-num">{num}</span><h2 class="display">{title}</h2></div><p>{text}</p></div>'
+
+def bk_file(name, title, use, tone):
+    def dl(ext):
+        return f'<a class="bk-dl" href="{KIT}{name}.{ext}" download aria-label="Download {title.lower()} as {ext.upper()}">{ext.upper()}</a>'
+    return f"""<article class="bk-card">
+  <div class="bk-stage {tone}"><img src="{KIT}{name}.svg" alt="{title}" class="{'bk-mark' if name.startswith('mark') else 'bk-logo'}"></div>
+  <div class="bk-card-text"><div><h3>{title}</h3><p>{use}</p></div><div class="bk-dls">{dl('svg')}{dl('png')}</div></div>
+</article>"""
+
+def bk_bg(tone, src, label, style=""):
+    return f'<figure class="bk-tile"><div class="bk-stage {tone}"{style}><img class="bk-logo" src="{src}" alt="Heleospace logo on {label.lower()}"></div><figcaption>{label}</figcaption></figure>'
+
+def bk_no(art, label, tone="on-white"):
+    return f'<figure class="bk-tile bk-no"><div class="bk-stage {tone}">{art}</div><figcaption><span aria-hidden="true">✕</span> {label}</figcaption></figure>'
+
+def bk_swatch(name, hex_, use, tone=""):
+    r, g, b = (int(hex_[i:i + 2], 16) for i in (1, 3, 5))
+    return f'<div class="bk-swatch"><div class="chip {tone}" style="background:{hex_}"></div><h3>{name}</h3><dl><dt>HEX</dt><dd>{hex_}</dd><dt>RGB</dt><dd>{r} {g} {b}</dd></dl><p>{use}</p></div>'
+
+# Clear space diagram: the logo is 640 wide, so its mark is 92.8 tall and x is 46.4.
+BK_CLEAR = f"""<svg class="bk-clear" viewBox="0 0 900 300" role="img" aria-label="The Heleospace logo inside a dashed boundary. The space on every side equals x, which is half the height of the mark.">
+<rect x="83.6" y="54.6" width="732.8" height="190.8" fill="none" stroke="#C2421F" stroke-width="1.5" stroke-dasharray="6 6"/>
+<rect x="130" y="101" width="640" height="97.6" fill="none" stroke="#C2421F" stroke-opacity=".45"/>
+<g fill="#C2421F" fill-opacity=".14"><rect x="83.6" y="54.6" width="46.4" height="46.4"/><rect x="770" y="54.6" width="46.4" height="46.4"/><rect x="83.6" y="198.6" width="46.4" height="46.8"/><rect x="770" y="198.6" width="46.4" height="46.8"/></g>
+<g fill="#C2421F" font-family="Archivo, Arial, sans-serif" font-size="24" text-anchor="middle"><text x="106.8" y="86">x</text><text x="793.2" y="86">x</text><text x="106.8" y="230">x</text><text x="793.2" y="230">x</text></g>
+<image href="{LOGO_BLACK}" x="130" y="101" width="640" height="97.55"/>
+</svg>"""
+
+bk_body = f"""<main id="main" class="bk">
+<section class="section tight"><div class="wrap">
+  {bk_head("files", "01", "Logo files", "Use these official files and do not redraw the logo. SVG suits screens and print at any size. PNG files have transparent backgrounds, for tools that do not accept SVG.")}
+  <div class="bk-grid two">
+    {bk_file("logo-black", "Black logo", "The default, for white and light backgrounds.", "on-white")}
+    {bk_file("logo-white", "White logo", "For black, dark and dark photographic backgrounds.", "on-night")}
+    {bk_file("mark-black", "Black mark", "For avatars, app icons and other small or square spaces.", "on-white")}
+    {bk_file("mark-white", "White mark", "The same uses, on dark backgrounds.", "on-night")}
+  </div>
+  <p class="bk-all"><a class="btn primary" href="{KIT}brand-kit.zip" download><span class="arrow">Download all files (ZIP)</span></a></p>
+</div></section>
+
+<section class="section tight surface"><div class="wrap">
+  {bk_head("clear-space", "02", "Clear space", "Keep the space around the logo free of text, images and page edges. On every side, leave at least x, which is half the height of the mark.")}
+  <div class="bk-panel">{BK_CLEAR}</div>
+</div></section>
+
+<section class="section tight"><div class="wrap">
+  {bk_head("minimum-size", "03", "Minimum size", "Below these sizes the logo loses its detail. When the full logo will not fit, use the mark on its own. Shown here at actual size on a standard screen.")}
+  <div class="bk-grid two">
+    <div class="bk-size"><div class="bk-stage on-white"><img src="{LOGO_BLACK}" alt="Full logo at its minimum size" width="120"></div><h3>Full logo</h3><p>120 px wide on screen, 25 mm wide in print.</p></div>
+    <div class="bk-size"><div class="bk-stage on-white"><img src="{KIT}mark-black.svg" alt="Mark at its minimum size" width="16"></div><h3>Mark</h3><p>16 px wide on screen, 5 mm wide in print.</p></div>
+  </div>
+</div></section>
+
+<section class="section tight surface"><div class="wrap">
+  {bk_head("backgrounds", "04", "Colour and backgrounds", "The logo appears only in black or white. Choose whichever stands out most clearly from the background. On photographs, place it over a calm, even area.")}
+  <div class="bk-grid four">
+    {bk_bg("on-white", LOGO_BLACK, "White")}
+    {bk_bg("on-paper", LOGO_BLACK, "Paper")}
+    {bk_bg("on-night", LOGO_WHITE, "Night")}
+    {bk_bg("on-photo", LOGO_WHITE, "A dark photograph", f' style="background-image:url({M["sunrise"]});background-size:222%;background-position:84% 66%"')}
+  </div>
+</div></section>
+
+<section class="section tight"><div class="wrap">
+  {bk_head("misuse", "05", "What to avoid", "The logo only stays recognisable if it looks the same everywhere. Please do not change the files in any of these ways.")}
+  <div class="bk-grid three">
+    {bk_no(f'<img class="bk-logo" src="{LOGO_BLACK}" alt="" style="transform:scale(1.25,.6)">', "Do not stretch or squash it")}
+    {bk_no(f'<img class="bk-logo" src="{LOGO_BLACK}" alt="" style="transform:rotate(-10deg)">', "Do not rotate it")}
+    {bk_no('<span class="bk-recolour" role="presentation"></span>', "Do not recolour it")}
+    {bk_no(f'<img class="bk-logo" src="{LOGO_BLACK}" alt="" style="filter:drop-shadow(0 7px 4px rgba(0,0,0,.55))">', "Do not add shadows or effects")}
+    {bk_no(f'<img class="bk-logo" src="{LOGO_BLACK}" alt="">', "Do not use it on a low-contrast background", "on-low")}
+    {bk_no(f'<span class="bk-retype"><img src="{KIT}mark-black.svg" alt="">Heleospace</span>', "Do not retype the name in another font")}
+  </div>
+</div></section>
+
+<section class="section tight surface"><div class="wrap">
+  {bk_head("palette", "06", "Colour palette", "These are the colours of the Heleospace website, for materials that sit alongside the logo. They do not apply to the logo itself.")}
+  <div class="bk-grid three">
+    {bk_swatch("Night", "#07080A", "Dark backgrounds.")}
+    {bk_swatch("Ink", "#111214", "Headings and text on light backgrounds.")}
+    {bk_swatch("Paper", "#F4F2ED", "Light backgrounds.", "line")}
+    {bk_swatch("Sun", "#FFF3DC", "Headings and text on dark backgrounds.", "line")}
+    {bk_swatch("Coral", "#FF5E3A", "The accent on dark backgrounds.")}
+    {bk_swatch("Ember", "#C2421F", "The accent on light backgrounds, including links.")}
+  </div>
+</div></section>
+
+<section class="section tight"><div class="wrap">
+  {bk_head("typography", "07", "Typography", "Both typefaces are free under the SIL Open Font License. The logo itself is drawn artwork, so always use the files rather than typing the name in a font.")}
+  <div class="bk-grid two">
+    <div class="bk-type"><p class="bk-type-a">Archivo</p><h3>Headings and interface</h3><p>Use a light weight and an expanded width for large headings. <a href="https://fonts.google.com/specimen/Archivo" rel="noopener">Get Archivo</a></p></div>
+    <div class="bk-type"><p class="bk-type-n">Newsreader</p><h3>Reading text</h3><p>Use a regular weight for paragraphs and longer articles. <a href="https://fonts.google.com/specimen/Newsreader" rel="noopener">Get Newsreader</a></p></div>
+  </div>
+</div></section>
+
+<section class="section tight surface"><div class="wrap">
+  {bk_head("name", "08", "Writing about us", "Heleospace is one word with a capital H. Please do not write HeleoSpace, Heleo Space or HELEOSPACE.")}
+  <div class="table-wrap"><table>
+    <tr><th>Name</th><th>What it refers to</th></tr>
+    <tr><td>Heleospace</td><td>The company, in everyday use</td></tr>
+    <tr><td>Heleospace LLC</td><td>The legal name, for contracts and formal notices</td></tr>
+    <tr><td>Helios, the Autonomous Mesh</td><td>The product</td></tr>
+    <tr><td>Heleo-1 to Heleo-4</td><td>The reference satellites</td></tr>
+  </table></div>
+  <h3 class="bk-sub">Short description</h3>
+  <blockquote class="bk-quote">Heleospace builds orbital data centers that run as an autonomous economy: compute in orbit and on the ground that finds work, agrees a price and settles on its own.</blockquote>
+</div></section>
+
+<section class="section tight"><div class="wrap">
+  {bk_head("terms", "09", "Terms of use", "The Heleospace name and logo belong to Heleospace LLC, which keeps all rights in them.")}
+  <div class="bk-grid two bk-terms">
+    <div><h3>You may</h3><ul><li>Use the unmodified logo to refer to Heleospace or its work, for example in articles, reports, talks and directories.</li><li>Link the logo to <a href="https://heleo.space/">heleo.space</a>.</li></ul></div>
+    <div><h3>Without our written permission, you may not</h3><ul><li>Use the name or logo in a way that suggests we sponsor, endorse or work with you.</li><li>Use them on merchandise or anything you sell.</li><li>Use them, or anything similar, in your own name, logo, product or domain.</li></ul></div>
+  </div>
+  <p class="bk-note">We may ask you to change or stop a use of the name or logo. For permission, or for a format that is not here, write to <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>
+  <p class="meta">Brand kit version 1.0, November 2026</p>
+</div></section>
+</main>
+"""
+write("/brand/", head("Brand kit", "Official Heleospace logo files, with guidelines for using the logo, colours, typefaces and name.", "/brand/") + header("/brand/")
+      + page_hero("Brand kit", "The Heleospace logo, and how to use it", "Official logo files and simple guidelines for press, partners and anyone writing about our work.", M["first_rays"], "Orbital sunrise from the ISS · NASA",
+                  f'<div class="btns"><a class="btn primary" href="{KIT}brand-kit.zip" download><span class="arrow">Download all files</span></a><a class="btn" href="#clear-space">Read the guidelines</a></div>')
+      + bk_body + footer())
 
 # 404
 write("/404.html", head("Page not found", "This page does not exist.", "/404.html") + header("/x") + page_hero("404", "Lost in orbit", "This page does not exist. It may have moved.", M["startrails"], "Star trails from the ISS · NASA", '<div class="btns"><a class="btn primary" href="/">Home</a><a class="btn" href="/updates/">Updates</a></div>') + "<main id='main'></main>" + footer())
