@@ -59,7 +59,7 @@ To change the logo, replace `_build/brand/heleospace-logo-source.svg`, then run 
 
 ## Media
 
-All photos and video must be public domain or freely licensed, and each source must be listed on the /credits/ page. Most media loads from its source; the URLs are in the `M` list in `_build/build.py`. Local copies go in `site/assets/media/`.
+All photos and video must be public domain or freely licensed, and each source must be listed on the /credits/ page. Most media loads from its source; the URLs are in the `M` list in `_build/build.py`. Local copies go in `site/assets/media/`. `hero-launch.mp4` there is the Pexels model rocket clip listed on /credits/ (Kindel Media), scaled to 1080p with its edges slightly cropped and its audio removed.
 
 ## Analytics
 

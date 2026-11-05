@@ -191,7 +191,10 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
             "Heleospace builds orbital data centers that run as an autonomous economy: compute in orbit and on the ground that finds work, agrees a price and settles on its own.", "/") + header("/") + f"""
 <main id="main">
 <section class="hero on-night">
-  <video autoplay muted loop playsinline preload="metadata" poster="{M['hero_poster']}" aria-hidden="true">
+  <video class="hero-launch is-on" autoplay muted loop playsinline preload="metadata" poster="/assets/media/hero-launch-poster.jpg" aria-hidden="true" data-hold="7.5" data-caption="Model rocket liftoff · Kindel Media via Pexels">
+    <source src="/assets/media/hero-launch.mp4" type="video/mp4">
+  </video>
+  <video muted loop playsinline preload="none" aria-hidden="true" data-hold="20" data-caption="Earth&#8217;s limb from the International Space Station · NASA">
     <source src="{M['hero_webm']}" type="video/webm">
   </video>
   <div class="wrap">
@@ -199,7 +202,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
     <h1 class="display">Orbital data centers, run as an autonomous economy.</h1>
     <p class="lede">Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Helios Mesh.</p>
     <div class="btns"><a class="btn primary" href="/mesh/"><span class="arrow">How the Mesh works</span></a><a class="btn" href="/updates/">Latest updates</a></div>
-    <div class="hero-meta"><span>Earth&#8217;s limb from the International Space Station · NASA</span><button type="button" data-video-toggle>Pause video</button></div>
+    <div class="hero-meta"><span data-video-caption>Model rocket liftoff · Kindel Media via Pexels</span><button type="button" data-video-toggle>Pause video</button></div>
   </div>
 </section>
 
@@ -641,6 +644,7 @@ write("/legal/", head("Legal & privacy", "Legal notice and privacy for heleo.spa
 
 CREDITS = [
   ("Earth's limb with clouds, HD Earth Views (home hero video)", "NASA Scientific Visualization Studio / ISS and Space Shuttle crews", "Public domain (NASA)", "https://svs.gsfc.nasa.gov/10766"),
+  ("Model rocket liftoff in smoke (home hero video; slightly cropped, darkened, audio removed)", "Kindel Media, Pexels", "Pexels License", "https://www.pexels.com/video/silver-rocket-on-the-field-7615705/"),
   ("ISS stills: aurora, star trails, city lights", "NASA Scientific Visualization Studio / ISS crew", "Public domain (NASA)", "https://svs.gsfc.nasa.gov/11474"),
   ("Orbital sunrise, iss066e152098", "NASA", "Public domain (NASA)", "https://www.nasa.gov/image-article/first-rays-of-an-orbital-sunrise-illuminate-earths-atmosphere-4"),
   ("The sun's first rays above Earth's limb, iss059e027932", "NASA", "Public domain (NASA)", "https://www.nasa.gov/image-detail/the-suns-first-rays-peek-above-earths-limb-46976234625-o"),
@@ -656,7 +660,7 @@ CREDITS = [
 ]
 rows = "".join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td><td><a href="{d}" rel="noopener">Source</a></td></tr>' for a, b, c, d in CREDITS)
 write("/credits/", head("Image credits", "Credits for photos and video on heleo.space.", "/credits/") + header("/credits/")
-      + """<div style="height:var(--header-h)"></div>""" + article(f"<h1 class='display' style='font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:48px'>Image credits</h1><h2 id='list'>Photos and video</h2><p>All media on this site are real photographs and footage, used under public-domain or free licences. NASA material does not imply NASA endorsement.</p><div class='table-wrap'><table><tr><th>Media</th><th>By</th><th>Licence</th><th></th></tr>{rows}</table></div>",
+      + """<div style="height:var(--header-h)"></div>""" + article(f"<h1 class='display' style='font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:48px'>Image credits</h1><h2 id='list'>Photos and video</h2><p>All media on this site are real photographs and footage, including a filmed model rocket on the home page, used under public-domain or free licences. NASA material does not imply NASA endorsement.</p><div class='table-wrap'><table><tr><th>Media</th><th>By</th><th>Licence</th><th></th></tr>{rows}</table></div>",
       [("list", "Photos and video")], '<a class="btn" href="/">Home</a>') + footer())
 
 # ---------------- BRAND KIT ----------------
