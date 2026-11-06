@@ -2,7 +2,7 @@
 title: Introducing Heleospace
 date: 2026-11-04
 category: Company
-summary: Heleospace is building orbital data centers that run as an autonomous economy, coordinated by the open Helios Mesh.
+summary: Heleospace is building orbital data centers that run as an autonomous economy, coordinated by the open Heleos Mesh.
 image: https://www.nasa.gov/wp-content/uploads/2023/03/iss066e152098.jpg
 image_alt: An orbital sunrise over Earth's atmosphere, seen from the International Space Station
 image_credit: NASA
@@ -15,7 +15,7 @@ Moving compute to orbit solves the physics. The harder problem is coordination: 
 
 ## What we are building
 
-**The Autonomous Mesh.** Helios is open software that routes compute, energy, data and tasks to where they run best, on Earth or in orbit.
+**The Autonomous Mesh.** Heleos is open software that routes compute, energy, data and tasks to where they run best, on Earth or in orbit.
 
 **Settlement.** Machines agree a price and pay each other for compute, energy, bandwidth and data, automatically.
 
