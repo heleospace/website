@@ -13,7 +13,7 @@ Today, compute is bought by people, through contracts and invoices. That works w
 
 Orbital compute is different. Nodes move, links between orbit planes come and go, and capacity depends on sunlight, temperature and radiation. Scheduling that by hand does not scale.
 
-In the Heleos Mesh, a satellite with spare capacity, a ground data center short of power and a lab with a workload can find each other, agree a price and settle in seconds, with no person in the loop.
+In the Heleo Mesh, a satellite with spare capacity, a ground data center short of power and a lab with a workload can find each other, agree a price and settle in seconds, with no person in the loop.
 
 > Hardware can be bought and code can be forked. A working orbital economy, with its nodes, settlement history and relationships, cannot.
 
