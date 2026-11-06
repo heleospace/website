@@ -169,7 +169,7 @@ def write(path, html):
     p.write_text(html, encoding="utf-8")
 
 # ---------------- diagram: the mesh across ground and orbit ----------------
-MESH_SVG = """<svg viewBox="0 0 1200 420" role="img" aria-label="Diagram: orbital nodes and ground data centers linked by the Heleos Mesh, with work and payments flowing between them">
+MESH_SVG = """<svg viewBox="0 0 1200 420" role="img" aria-label="Diagram: orbital nodes and ground data centers linked by the Heleo Mesh, with work and payments flowing between them">
 <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#93A6BA" stop-opacity=".22"/><stop offset="1" stop-color="#93A6BA" stop-opacity="0"/></linearGradient></defs>
 <path d="M-20 420 Q600 250 1220 420Z" fill="url(#g)"/><path d="M-20 420 Q600 250 1220 420" fill="none" stroke="#9AA6B4" stroke-opacity=".5"/>
 <path d="M-20 300 Q600 -40 1220 300" fill="none" stroke="#FFF3DC" stroke-opacity=".25" stroke-dasharray="3 7"/>
@@ -200,7 +200,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
   <div class="wrap">
     <p class="eyebrow">Heleospace</p>
     <h1 class="display">Orbital data centers, run as an autonomous economy.</h1>
-    <p class="lede">Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Heleos Mesh.</p>
+    <p class="lede">Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Heleo Mesh.</p>
     <div class="btns"><a class="btn primary" href="/mesh/"><span class="arrow">How the Mesh works</span></a><a class="btn" href="/updates/">Latest updates</a></div>
     <div class="hero-meta"><span data-video-caption>Artemis II liftoff, seen from Banana Creek · NASA</span><button type="button" data-video-toggle>Pause video</button></div>
   </div>
@@ -245,7 +245,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
     </div>
     <div class="diagram reveal">{MESH_SVG}</div>
     <div class="cols c3 reveal" style="margin-top:48px">
-      <div class="col"><span class="num">Layer 1</span><h3>Autonomous Mesh</h3><p>Heleos, our open software, routes each piece of work to where it runs best, on Earth or in orbit.</p></div>
+      <div class="col"><span class="num">Layer 1</span><h3>Autonomous Mesh</h3><p>Heleo Mesh, our open software, routes each piece of work to where it runs best, on Earth or in orbit.</p></div>
       <div class="col"><span class="num">Layer 2</span><h3>Orbital and ground nodes</h3><p>Solar-powered compute in low Earth orbit, linked with data centers on the ground.</p></div>
       <div class="col"><span class="num">Layer 3</span><h3>Settlement</h3><p>Machines pay and get paid for compute, energy, bandwidth and data, automatically.</p></div>
     </div>
@@ -277,7 +277,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
     <div class="moat reveal">
       <div><h3>Network effect</h3><p>Every node adds both supply and demand. Settlement history and node reputation stay in the network.</p><small>Testnet in Year 1</small></div>
       <div><h3>Radiation- and heat-aware routing</h3><p>The mesh moves work away from radiation zones and hot nodes, and recovers it without losing a payment.</p><small>Ground testbed in Year 1</small></div>
-      <div><h3>Open standard, certified network</h3><p>Anyone can build on Heleos. Only Heleospace certifies nodes for the official network.</p><small>From incorporation</small></div>
+      <div><h3>Open standard, certified network</h3><p>Anyone can build on Heleo Mesh. Only Heleospace certifies nodes for the official network.</p><small>From incorporation</small></div>
       <div><h3>Data and flight heritage</h3><p>Lab results, then orbital telemetry, improve routing. A new entrant starts with none.</p><small>First flight in Year 3</small></div>
     </div>
   </div>
@@ -345,13 +345,13 @@ write("/", home)
 # ---------------- MESH ----------------
 mesh_body = f"""
 <h2 id="what">What the Mesh is</h2>
-<p>The Autonomous Mesh is open software, called Heleos, that lets compute, energy, data and tasks route themselves across Earth and orbit. Nodes on the ground and in orbit offer capacity. Software agents decide where each piece of work should run. A settlement layer lets machines agree a price and pay each other automatically.</p>
-<p>Heleospace builds Heleos and operates the official network. The code is open; the certified network, its settlement history and its operations are ours.</p>
+<p>Heleo Mesh is our open implementation of the Autonomous Mesh: software that lets compute, energy, data and tasks route themselves across Earth and orbit. Nodes on the ground and in orbit offer capacity. Software agents decide where each piece of work should run. A settlement layer lets machines agree a price and pay each other automatically.</p>
+<p>Heleospace builds Heleo Mesh and operates the official network. The code is open; the certified network, its settlement history and its operations are ours.</p>
 <h2 id="stack">Five layers, two that we own</h2>
 <div class="table-wrap"><table>
 <tr><th>Layer</th><th>What it does</th><th>Who provides it</th></tr>
 <tr><td>Autonomous Mesh</td><td>Agents route compute, energy, data and tasks to where they run best</td><td>Heleospace (open source)</td></tr>
-<tr><td>Compute and energy</td><td>Solar-powered AI compute nodes on the ground and in orbit</td><td>Heleos-coordinated nodes</td></tr>
+<tr><td>Compute and energy</td><td>Solar-powered AI compute nodes on the ground and in orbit</td><td>Nodes coordinated by Heleo Mesh</td></tr>
 <tr><td>Chips</td><td>Low-power processors that also reduce heat in orbit</td><td>Chip partners, with our co-design</td></tr>
 <tr><td>Deployment</td><td>Launch and operation of orbital nodes</td><td>Launch and satellite partners</td></tr>
 <tr><td>Settlement</td><td>Machine-to-machine payment for compute, energy, bandwidth and data</td><td>Heleospace</td></tr>
@@ -360,12 +360,12 @@ mesh_body = f"""
 <p>Today, compute is bought by people, through contracts and invoices. In the Mesh, a satellite with spare capacity, a ground data center short of power and a lab with a workload find each other, agree a price and settle in seconds. Every transaction carries a small settlement fee, and every new node makes the network more useful to the others.</p>
 <figure><img src="{M['network']}" alt="Earth at night with city lights and network lines" loading="lazy"><figcaption>Earth at night. Photo: NASA, via Unsplash.</figcaption></figure>
 <h2 id="lineage">Lineage</h2>
-<p>Heleos extends the open-source Morpheus codebase (<a href="https://mor.org" rel="noopener">mor.org</a>), a decentralized AI network running on the ground since 2024. Heleospace adapts that ground mesh for orbit: a compute marketplace across Earth and space first, then an autonomous gateway between ground and orbital nodes, then settlement, then one network across both.</p>
+<p>Heleo Mesh extends the open-source Morpheus codebase (<a href="https://mor.org" rel="noopener">mor.org</a>), a decentralized AI network running on the ground since 2024. Heleospace adapts that ground mesh for orbit: a compute marketplace across Earth and space first, then an autonomous gateway between ground and orbital nodes, then settlement, then one network across both.</p>
 <p>The Autonomous Mesh concept was originated by {ORIGINATOR}, who first described it in {origin_link()} ({ORIGIN_DATE}). <a href="/research/#origin">From idea to paper</a>.</p>
 <h2 id="unknown">What we are still finding out</h2>
 <ol><li>How much work the mesh can recover after a radiation event without losing settlement correctness.</li><li>How fast routing decisions must be when links between orbit planes come and go.</li><li>Which settlement design stays correct when nodes drop out mid-transaction.</li></ol>
 """
-write("/mesh/", head("The Autonomous Mesh", "Heleos, the open Autonomous Mesh, routes compute, energy and data across Earth and orbit and lets machines settle automatically.", "/mesh/")
+write("/mesh/", head("The Autonomous Mesh", "Heleo Mesh, our open implementation of the Autonomous Mesh, routes compute, energy and data across Earth and orbit and lets machines settle automatically.", "/mesh/")
       + header("/mesh/") + page_hero("Mesh", "The Autonomous Mesh", "Open software that lets compute, energy, data and tasks route themselves across Earth and orbit, and lets machines pay each other.", M["aurora"], "Aurora from the ISS · NASA")
       + article(mesh_body, [("what", "What the Mesh is"), ("stack", "Five layers"), ("economy", "An economy"), ("lineage", "Lineage"), ("unknown", "Still unknown")],
                 '<a class="btn primary" href="/technology/"><span class="arrow">Technology</span></a><a class="btn" href="/contact/?topic=research">Build with us</a>') + footer())
@@ -394,7 +394,7 @@ def machine(i, flip, img, alt, cap, label, title, lede, buys, sells):
   </div>
 </section>
 """
-machines_html = head("The machine economy", "Robots, vehicles and drones generate more data than they can process on board. The Heleos Mesh gives them somewhere to send it, and a way to pay.", "/machines/") + header("/machines/") + page_hero(
+machines_html = head("The machine economy", "Robots, vehicles and drones generate more data than they can process on board. The Heleo Mesh gives them somewhere to send it, and a way to pay.", "/machines/") + header("/machines/") + page_hero(
   "Machines", "Machines that buy, sell and share compute", "Robots, vehicles and drones generate more data than they can process on board. The Mesh gives them somewhere to send it, and a way to pay.", MM["highway"], "Photo: Akin Cakiner, Unsplash") + f"""
 <main id="main">
 <section class="section">
@@ -483,7 +483,7 @@ tech_body = f"""
 <p>Low-power chips cut heat at the source, heat pipes carry it to deployable radiators, and a dawn-dusk orbit keeps the load steady. The mesh throttles work and routes it to nodes with thermal headroom.</p>
 <figure><img src="{M['first_rays']}" alt="The sun's first rays above Earth's limb, seen from the International Space Station" loading="lazy"><figcaption>An orbital sunrise from the International Space Station, 2019. Photo: NASA.</figcaption></figure>
 <h2 id="heleo-1">Heleo-1, the reference satellite</h2>
-<p>Heleo-1 is the reference satellite for the Heleos Mesh in orbit. It is a concept; none has flown.</p>
+<p>Heleo-1 is the reference satellite for the Heleo Mesh in orbit. It is a concept; none has flown.</p>
 <div class="table-wrap"><table>
 <tr><th>Satellite</th><th>Plan</th></tr>
 <tr><td>Heleo-1</td><td>First orbital demonstration, Year 3. About 60 kg on a commercial bus, rideshare launch, dawn-dusk orbit</td></tr>
@@ -492,7 +492,7 @@ tech_body = f"""
 <h2 id="launch">Launch and servicing</h2>
 <p>Designed for rideshare missions with a launch partner. Satellites are replaced, not repaired; software updates go over the air; and the mesh routes around any failed node. Our economic model states the launch price at which orbital compute matches ground data centers as an explicit assumption: today orbital compute costs more per GPU-hour, and the case depends on launch costs falling.</p>
 """
-write("/technology/", head("Technology · Heleo-1", "How Heleospace handles radiation, heat and launch, and Heleo-1, the reference satellite for the Heleos Mesh.", "/technology/")
+write("/technology/", head("Technology · Heleo-1", "How Heleospace handles radiation, heat and launch, and Heleo-1, the reference satellite for the Heleo Mesh.", "/technology/")
       + header("/technology/") + page_hero("Technology", "A data center, redesigned for orbit", "The main barrier is radiation. Our research is built to remove it in partner labs before the first flight; the flight validates what labs cannot reproduce.", M["sunrise"], "Orbital sunrise from the ISS · NASA")
       + article(tech_body, [("physics", "The physics"), ("radiation", "Radiation"), ("thermal", "Heat and energy"), ("heleo-1", "Heleo-1"), ("launch", "Launch and servicing")],
                 '<a class="btn primary" href="/research/"><span class="arrow">Research program</span></a><a class="btn" href="/roadmap/">Roadmap</a>') + footer())
@@ -511,7 +511,7 @@ res_body = f"""
 <p><strong>The Autonomous Mesh: a technical paper</strong> (Version 0.1, November 2026). Eric Chan, Heleospace. How compute nodes on Earth and in orbit can find work, agree a price and settle automatically, with the settlement design, radiation- and heat-aware routing, the Heleo-1 reference satellite, our research program and the risks behind every figure.</p>
 {('<p><a href="' + PAPER_PDF + '">Read the paper (PDF)</a></p>') if PAPER_PDF else ('<p><em>Publication coming soon.</em> To request an early copy for research or partnership, write to <a href="mailto:' + CONTACT + '">' + CONTACT + '</a>.</p>')}
 <h2 id="approach">How we work</h2>
-<p>Years 1 and 2 are research-led. We work with university and government research labs on joint testing, shared testbeds and co-authored papers. Every workstream produces a measured result rather than a claim, and every collaboration is also a route to the first users of Heleos.</p>
+<p>Years 1 and 2 are research-led. We work with university and government research labs on joint testing, shared testbeds and co-authored papers. Every workstream produces a measured result rather than a claim, and every collaboration is also a route to the first users of Heleo Mesh.</p>
 <h2 id="workstreams">Five Year 1 workstreams</h2>
 <div class="table-wrap"><table>
 <tr><th>Workstream</th><th>What is done</th><th>Output</th></tr>
@@ -536,9 +536,9 @@ write("/research/", head("Research", "Heleospace's Year 1 research program: radi
 # ---------------- ROADMAP ----------------
 road_body = """
 <h2 id="plan">Five years, three pipelines</h2>
-<p>The Heleos Mesh, the autonomous economy and our chip work advance together. Each year adds to what makes the network hard to replace. Years are targets from the start of the program, not promises.</p>
+<p>The Heleo Mesh, the autonomous economy and our chip work advance together. Each year adds to what makes the network hard to replace. Years are targets from the start of the program, not promises.</p>
 <div class="table-wrap"><table>
-<tr><th>Year</th><th>Heleos Mesh</th><th>Autonomous economy</th><th>Chips</th></tr>
+<tr><th>Year</th><th>Heleo Mesh</th><th>Autonomous economy</th><th>Chips</th></tr>
 <tr><td>1</td><td>Ground testbed and lab validation</td><td>Settlement design and testnet</td><td>Commercial low-power module qualified</td></tr>
 <tr><td>2</td><td>Flight-ready engineering; pilots on the ground mesh</td><td>Machine-to-machine payments between partner nodes</td><td>Co-design using lab and ground data</td></tr>
 <tr><td>3</td><td>Heleo-1 in orbit</td><td>First machine-to-machine payments in orbit</td><td>Test chip validated in orbit</td></tr>
@@ -546,9 +546,9 @@ road_body = """
 <tr><td>5</td><td>Open standard for ground-to-orbit compute</td><td>Recurring settlement revenue</td><td>Custom chip in development</td></tr>
 </table></div>
 <h2 id="gates">Gates between phases</h2>
-<p><strong>Before flight:</strong> measured radiation and thermal limits for the compute module, and settlement that stays correct under injected faults on the ground testbed. <strong>Before scale:</strong> Heleo-1 telemetry that confirms the lab results over a full year in orbit. <strong>Before the standard:</strong> independent groups running Heleos nodes in production.</p>
+<p><strong>Before flight:</strong> measured radiation and thermal limits for the compute module, and settlement that stays correct under injected faults on the ground testbed. <strong>Before scale:</strong> Heleo-1 telemetry that confirms the lab results over a full year in orbit. <strong>Before the standard:</strong> independent groups running Heleo Mesh nodes in production.</p>
 <h2 id="customers">Who it serves</h2>
-<p><strong>Universities:</strong> open-source Heleos, testbed access and joint research. <strong>Government:</strong> resilient compute across ground and orbit, and sovereign deployments. <strong>Business:</strong> satellite operators, AI and cloud companies, telecoms and energy, with hosted mesh services and orbital capacity from Year 4.</p>
+<p><strong>Universities:</strong> open-source Heleo Mesh, testbed access and joint research. <strong>Government:</strong> resilient compute across ground and orbit, and sovereign deployments. <strong>Business:</strong> satellite operators, AI and cloud companies, telecoms and energy, with hosted mesh services and orbital capacity from Year 4.</p>
 """
 write("/roadmap/", head("Roadmap", "The Heleospace roadmap: ground testbed in Year 1, Heleo-1 in Year 3, an open standard for ground-to-orbit compute by Year 5.", "/roadmap/")
       + header("/roadmap/") + page_hero("Roadmap", "Prove it on the ground. Then fly.", "Research-led in Years 1 and 2, first orbital demonstration in Year 3, an open standard for ground-to-orbit compute by Year 5.", M["startrails"], "Star trails from the ISS · NASA")
@@ -563,11 +563,11 @@ about_body = f"""
 <p>Heleospace is built by a group of initiators and contributors with backgrounds in Bitcoin, decentralized AI and space engineering, working together with university and government research labs. Contributors work through Heleospace LLC under contributor agreements, and the team grows as the research program does.</p>
 <p>Interested in contributing? <a href="/contact/?topic=careers">Get in touch</a>.</p>
 <h2 id="company">The company</h2>
-<p>Heleospace LLC, a Delaware company, is where the work happens today. Heleospace Inc. is planned as the operating company that will own Heleos. Specialist partners supply chips, satellite buses and launch; Heleospace builds the network intelligence and the settlement layer.</p>
+<p>Heleospace LLC, a Delaware company, is where the work happens today. Heleospace Inc. is planned as the operating company that will own Heleo Mesh. Specialist partners supply chips, satellite buses and launch; Heleospace builds the network intelligence and the settlement layer.</p>
 <h2 id="principles">How we work</h2>
-<ul><li><strong>Open by default.</strong> Heleos is open source; we publish what we learn.</li><li><strong>Numbers over adjectives.</strong> Every claim comes with units, a source or a stated assumption.</li><li><strong>Present tense only for what exists.</strong> Heleo-1 is a concept until it flies.</li><li><strong>Hard problems named openly.</strong> Radiation, heat, launch mass, servicing and debris.</li></ul>
+<ul><li><strong>Open by default.</strong> Heleo Mesh is open source; we publish what we learn.</li><li><strong>Numbers over adjectives.</strong> Every claim comes with units, a source or a stated assumption.</li><li><strong>Present tense only for what exists.</strong> Heleo-1 is a concept until it flies.</li><li><strong>Hard problems named openly.</strong> Radiation, heat, launch mass, servicing and debris.</li></ul>
 <h2 id="lineage">Lineage</h2>
-<p>Heleos extends the open-source Morpheus codebase. Some initiators contribute to Morpheus in their personal capacity; Heleospace is an independent company.</p>
+<p>Heleo Mesh extends the open-source Morpheus codebase. Some initiators contribute to Morpheus in their personal capacity; Heleospace is an independent company.</p>
 """
 write("/about/", head("About", "Heleospace builds orbital data centers that run as an autonomous economy. Meet the initiators and how we work.", "/about/")
       + header("/about/") + page_hero("About", "Building the economy between Earth and orbit", "An independent company, built by contributors from Bitcoin, decentralized AI and space.", M["first_rays"], "Orbital sunrise from the ISS · NASA")
@@ -636,7 +636,7 @@ legal_body = f"""
 <p>With your consent, we use Google Analytics 4 to understand how visitors use this site, for example which pages are read and how people arrive. Google Analytics sets cookies (such as _ga) and sends usage data, including a shortened IP address, device and browser information, to Google. We use it only to improve the site, not for advertising, and we do not combine it with other data.</p>
 <p>Google Analytics loads only if you choose "Accept" in the cookie banner. If you choose "Deny", no analytics cookies are set. We remember your choice in your browser's local storage for 12 months. You can change it at any time through <a href="#" data-cookie-settings>Cookie settings</a>, and you can delete cookies in your browser settings. Google's own policy is at <a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a>.</p>
 <h2 id="marks">Trademarks</h2>
-<p>Heleospace and Heleos are names used by Heleospace LLC. NASA imagery is used under NASA's media guidelines and does not imply NASA endorsement.</p>
+<p>Heleospace, Heleo and Heleo Mesh are names used by Heleospace LLC. NASA imagery is used under NASA's media guidelines and does not imply NASA endorsement.</p>
 """
 write("/legal/", head("Legal & privacy", "Legal notice and privacy for heleo.space.", "/legal/") + header("/legal/")
       + """<div style="height:var(--header-h)"></div>""" + article("<h1 class='display' style='font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:48px'>Legal &amp; privacy</h1>" + legal_body,
@@ -770,7 +770,8 @@ bk_body = f"""<main id="main" class="bk">
     <tr><th>Name</th><th>What it refers to</th></tr>
     <tr><td>Heleospace</td><td>The company, in everyday use</td></tr>
     <tr><td>Heleospace LLC</td><td>The legal name, for contracts and formal notices</td></tr>
-    <tr><td>Heleos, the Autonomous Mesh</td><td>The product</td></tr>
+    <tr><td>Heleo Mesh</td><td>The product: our open software and network. Always two words, never Heleo alone.</td></tr>
+    <tr><td>The Autonomous Mesh</td><td>The idea behind Heleo Mesh, from our technical paper</td></tr>
     <tr><td>Heleo-1 to Heleo-4</td><td>The reference satellites</td></tr>
   </table></div>
   <h3 class="bk-sub">Short description</h3>
