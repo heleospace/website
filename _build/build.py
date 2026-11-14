@@ -7,9 +7,10 @@ import os, pathlib
 OUT = pathlib.Path(__file__).resolve().parent.parent / "site"
 CONTACT = "hello@heleo.space"
 GA_ID = "G-WWS90D42NG"   # Google Analytics 4 Measurement ID; set "" to switch analytics and the cookie banner off
-X_URL = "https://x.com/heleospace"     # set to the company X account
+X_URL = ""          # company X account; "" hides the footer link
 GITHUB_URL = "https://github.com/heleospace/"
-LINKEDIN_URL = "https://www.linkedin.com/company/Heleospace"
+LINKEDIN_URL = ""   # company LinkedIn page; "" hides the footer link
+SOCIAL_LINKS = "".join(f'<li><a href="{u}" rel="noopener">{n}</a></li>' for n, u in (("X", X_URL), ("LinkedIn", LINKEDIN_URL)) if u)
 # Technical paper PDF: leave "" until the paper is published,
 # then set to "/research/autonomous-mesh-technical-paper-v0.1.pdf" and upload that PDF.
 PAPER_PDF = ""
@@ -125,7 +126,7 @@ def footer():
       <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
       <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/research/">Research</a></li></ul></div>
       <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
-      <div><h4>Elsewhere</h4><ul><li><a href="{X_URL}" rel="noopener">X</a></li><li><a href="{LINKEDIN_URL}" rel="noopener">LinkedIn</a></li><li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul>{SOCIAL_LINKS}<li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <p>© <span data-year>2026</span> Heleospace LLC. Heleospace Inc. is planned. Information on this site is not an offer to sell or a solicitation of an offer to buy any security. Plans and figures describe research and targets, not promises.</p>
