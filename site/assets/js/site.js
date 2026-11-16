@@ -63,6 +63,24 @@
     });
   }
 
+  // Hero headline sets: cross-fade in turn. Pauses on hover or keyboard focus and with the video's
+  // pause button; visitors who prefer reduced motion only see the first set.
+  var slideBox = document.querySelector('[data-hero-slides]');
+  var slides = slideBox ? [].slice.call(slideBox.querySelectorAll('.hero-slide')) : [];
+  if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var si = 0, hover = false, focused = false;
+    var held = function () { return hover || focused || (vbtn && vbtn.textContent === 'Play video') || document.hidden; };
+    var show = function (n) {
+      slides[si].classList.remove('is-on'); slides[si].setAttribute('aria-hidden', 'true'); slides[si].inert = true;
+      si = n; slides[si].classList.add('is-on'); slides[si].removeAttribute('aria-hidden'); slides[si].inert = false;
+    };
+    slideBox.addEventListener('mouseenter', function () { hover = true; });
+    slideBox.addEventListener('mouseleave', function () { hover = false; });
+    slideBox.addEventListener('focusin', function () { focused = true; });
+    slideBox.addEventListener('focusout', function () { focused = false; });
+    setInterval(function () { if (!held()) show((si + 1) % slides.length); }, (Number(slideBox.dataset.seconds) || 7) * 1000);
+  }
+
   // Right rail: highlight current section
   var railLinks = document.querySelectorAll('.rail a');
   if (railLinks.length && io) {

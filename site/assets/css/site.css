@@ -83,7 +83,12 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
 @media (max-aspect-ratio:1/1){.hero video.hero-launch{object-position:17% 50%;filter:brightness(.636)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.55) 0%,rgba(7,8,10,.15) 35%,rgba(7,8,10,.65) 72%,rgba(7,8,10,.95) 100%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(56px,9vh,112px);padding-top:calc(var(--header-h) + 40px)}
-.hero h1{max-width:15ch}
+.hero h1,.hero .hero-slide .display{max-width:15ch}
+.hero .hero-slide .display{font-size:clamp(2.5rem,6.2vw,5.4rem)}
+/* headline sets stack in one grid cell, so the hero keeps the height of the tallest set */
+.hero-slides{display:grid}
+.hero-slide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
+.hero-slide.is-on{opacity:1;visibility:visible;transition:opacity .9s ease .25s,visibility 0s}
 .hero .lede{max-width:52ch;color:rgba(255,243,220,.78)}
 .hero-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:20px;border-top:1px solid var(--night-hair);font-family:var(--display);font-size:.85rem;color:var(--night-muted)}
 .hero-meta button{background:none;border:1px solid var(--night-hair);color:var(--night-muted);border-radius:999px;padding:6px 14px;font:inherit;cursor:pointer}
@@ -279,6 +284,7 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
   .reveal{opacity:1;transform:none;transition:none}
   .media img{transition:none}
   .hero video{transition:none}
+  .hero-slide{transition:none}
 }
 
 .body pre{white-space:pre-wrap;overflow-wrap:anywhere}
