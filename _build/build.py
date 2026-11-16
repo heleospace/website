@@ -188,6 +188,29 @@ MESH_SVG = """<svg viewBox="0 0 1200 420" role="img" aria-label="Diagram: orbita
 <text x="600" y="162" text-anchor="middle" fill="#FF5E3A">work + payment, settled machine to machine</text></g>
 </svg>"""
 
+# Home hero: headline sets that cross-fade in turn. The first is the page's <h1> and the only one
+# shown to visitors who prefer reduced motion. Each set: (headline, subline, [(label, href), ...]).
+HERO_SETS = [
+  ("Orbital data centers, run as an autonomous economy.",
+   "Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Heleo Mesh, where AI agents and machines buy compute, get paid and are trusted.",
+   [("How the Mesh works", "/mesh/"), ("Latest updates", "/updates/")]),
+  ("Trust, built into the Heleo Mesh.",
+   "Every agent and machine has one identity and a record of work done, so others know who they are dealing with before they pay.",
+   [("How the Mesh works", "/mesh/"), ("Deploy an agent", "/agents/")]),
+  ("Your autonomous team, live in minutes.",
+   "Free, open agents that buy their own compute, work together and settle payment through the Heleo Mesh.",
+   [("Deploy an agent", "/agents/"), ("How the Mesh works", "/mesh/")]),
+]
+HERO_SECONDS = 7
+def hero_slides():
+    out = []
+    for i, (title, lede, btns) in enumerate(HERO_SETS):
+        tag = "h1" if i == 0 else "p"
+        b = "".join(f'<a class="btn{" primary" if j == 0 else ""}" href="{h}">' + (f'<span class="arrow">{l}</span>' if j == 0 else l) + "</a>" for j, (l, h) in enumerate(btns))
+        attrs = ' class="hero-slide is-on"' if i == 0 else ' class="hero-slide" aria-hidden="true" inert'
+        out.append(f'<div{attrs}><{tag} class="display">{title}</{tag}><p class="lede">{lede}</p><div class="btns">{b}</div></div>')
+    return "\n      ".join(out)
+
 # ---------------- HOME ----------------
 home = head("Heleospace — Orbital data centers, run as an autonomous economy",
             "Heleospace builds orbital data centers that run as an autonomous economy: compute in orbit and on the ground that finds work, agrees a price and settles on its own.", "/") + header("/") + f"""
@@ -201,9 +224,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
   </video>
   <div class="wrap">
     <p class="eyebrow">Heleospace</p>
-    <h1 class="display">Orbital data centers, run as an autonomous economy.</h1>
-    <p class="lede">Solar-powered compute in orbit and on the ground that finds work, agrees a price and settles on its own, through the open Heleo Mesh, where AI agents and machines buy compute, get paid and are trusted.</p>
-    <div class="btns"><a class="btn primary" href="/mesh/"><span class="arrow">How the Mesh works</span></a><a class="btn" href="/updates/">Latest updates</a></div>
+    <div class="hero-slides" data-hero-slides data-seconds="{HERO_SECONDS}">{hero_slides()}</div>
     <div class="hero-meta"><span data-video-caption>Artemis II liftoff, seen from Banana Creek · NASA</span><button type="button" data-video-toggle>Pause video</button></div>
   </div>
 </section>
