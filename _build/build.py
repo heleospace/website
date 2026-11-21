@@ -41,7 +41,7 @@ M = {
 }
 
 # Fields menu, footer column and /fields/ anchors share this list.
-FIELDS = [("Heleospace for Research", "/fields/", "Compute on Earth, access to orbit"),
+FIELDS = [("Research", "/fields/", "Compute on Earth, access to orbit"),
           ("AI &amp; model training", "/fields/#ai", "Train and run models on the Mesh"),
           ("Earth &amp; climate", "/fields/#earth", "Process orbital data where it is captured"),
           ("Chips &amp; space hardware", "/fields/#hardware", "Test hardware in real orbit"),
@@ -350,7 +350,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
         <li><b>Settlement</b><span>Payments that stay correct when nodes fail</span></li>
       </ul>
       <div class="btns"><a class="btn" href="/research/"><span class="arrow">Research program</span></a></div>
-      <p class="aside">Running research of your own? <a class="link" href="/fields/">See Heleospace for Research →</a></p>
+      <p class="aside">Running research of your own? <a class="link" href="/fields/">See Research in Fields →</a></p>
     </div>
   </div>
 </section>
@@ -583,14 +583,14 @@ res_body = f"""
 <ol><li>Which shielding mass gives the best cost per unit of radiation reduction for the chosen compute module?</li><li>How much work can the mesh recover after a radiation event without losing settlement correctness?</li><li>At what launch price per kilogram does an orbital node match a ground node on cost per unit of compute?</li></ol>
 <h2 id="collaborate">Collaborate</h2>
 <p>We are looking for labs with beam-test, thermal-vacuum or distributed-systems capability, and for researchers who want to work on these questions with us. Results are shared with research partners and published where we can.</p>
-<p>Running research of your own and need compute or orbital access? See <a href="/fields/">Heleospace for Research</a>.</p>
+<p>Running research of your own and need compute or orbital access? See <a href="/fields/">Research in Fields</a>.</p>
 """
 write("/research/", head("Research", "Heleospace's Year 1 research program: radiation, shielding, fault-tolerant mesh, thermal-vacuum and settlement under stress.", "/research/")
       + header("/research/") + page_hero("Research", "Measured results, not claims", "Five workstreams with university and government labs remove the barriers to compute in orbit before the first flight.", M["cables"], "Photo: Taylor Vick, Unsplash")
       + article(res_body, [("origin", "From idea to paper"), ("paper", "Technical paper"), ("approach", "How we work"), ("workstreams", "Workstreams"), ("risks", "Risks"), ("questions", "Open questions"), ("collaborate", "Collaborate")],
                 '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Collaborate on research</span></a><a class="btn" href="/technology/">Technology</a>') + footer())
 
-# ---------------- FIELDS: Heleospace for Research ----------------
+# ---------------- FIELDS: Research ----------------
 def field(anchor, num, name, intro, items):
     lis = "".join(f"<li>{i}</li>" for i in items)
     return f"""<section class="field" id="{anchor}">
@@ -634,8 +634,8 @@ fields_body = f"""
 <h2 id="apply">Bring your research to the Mesh</h2>
 <p>Tell us about your lab, your field and what you want to run, on Earth or in orbit.</p>
 """
-write("/fields/", head("Heleospace for Research", "Heleospace supports research. Compute on Heleo Mesh today, and access to orbit through Heleo-1, our planned orbital data center.", "/fields/")
-      + header("/fields/") + page_hero("Fields · Heleospace for Research", "We support the research. You make the discovery.", "Heleospace gives labs, universities and agencies compute on Heleo Mesh today, and a way into orbit through Heleo-1, our planned orbital data center. Your team leads the work and keeps the credit. We provide the platform it runs on.", M["network"], "Earth at night · NASA, via Unsplash")
+write("/fields/", head("Research", "Heleospace supports research. Compute on Heleo Mesh today, and access to orbit through Heleo-1, our planned orbital data center.", "/fields/")
+      + header("/fields/") + page_hero("Fields · Research", "We support the research. You make the discovery.", "Heleospace gives labs, universities and agencies compute on Heleo Mesh today, and a way into orbit through Heleo-1, our planned orbital data center. Your team leads the work and keeps the credit. We provide the platform it runs on.", M["network"], "Earth at night · NASA, via Unsplash")
       + article(fields_body, [("why-orbit", "Why orbit"), ("access", "Levels of access"), ("ai", "AI &amp; model training"), ("earth", "Earth &amp; climate"), ("hardware", "Chips &amp; space hardware"), ("networks", "Networks &amp; autonomy"), ("engineering", "Engineering &amp; simulation"), ("together", "Working together"), ("apply", "Apply")],
                 '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/">Our R&amp;D</a>', updated="21 November 2026") + footer())
 
