@@ -218,6 +218,15 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
 .rail h4{font-size:.8rem;font-weight:500;color:var(--muted);margin:0 0 12px}
 .rail a{display:block;text-decoration:none;color:var(--muted);padding:7px 0 7px 14px;border-left:1px solid var(--hair)}
 .rail a:hover,.rail a.on{color:var(--ink);border-left-color:var(--accent)}
+/* article: two-column field sections, card notes (/fields/) */
+.body .cols{margin:28px 0 8px}
+.body .field{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);margin:64px 0 0;padding-top:28px;border-top:1px solid var(--rule)}
+.body .field h2{margin:0 0 12px}
+.body .field .eyebrow{margin-bottom:14px}
+.body .field p{margin:0;color:var(--muted)}
+.body .field ul{margin:0;padding-left:1.1em}
+.body .note{font-family:var(--display);font-size:.85rem;color:var(--muted);margin:20px 0 0}
+.split .aside{margin:20px 0 0;color:var(--muted)}
 .people{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--rule);margin:8px 0 32px}
 .person{padding:20px 20px 20px 0;border-bottom:1px solid var(--hair)}
 .person b{display:block;font-family:var(--display);font-stretch:112%;font-weight:500;color:var(--ink);font-size:1.08rem}
@@ -236,7 +245,7 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
 
 /* ---------- footer ---------- */
 .site-footer{background:var(--night);color:var(--night-muted);font-family:var(--display);font-size:.9rem;padding:clamp(64px,8vw,104px) 0 40px}
-.foot-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:40px;padding-bottom:56px;border-bottom:1px solid var(--night-hair)}
+.foot-top{display:grid;grid-template-columns:1.5fr repeat(5,1fr);gap:40px;padding-bottom:56px;border-bottom:1px solid var(--night-hair)}
 .foot-brand p{font-family:var(--read);font-size:1.05rem;color:var(--night-muted);max-width:30ch;margin:18px 0 0}
 .foot-brand .brand,.foot-brand .brand:hover{color:#fff}
 .site-footer h4{font-size:.8rem;font-weight:500;color:var(--sun);margin:0 0 16px}
@@ -274,6 +283,7 @@ a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
   .step::before{left:-28px;top:4px}
   .article{grid-template-columns:1fr}.rail{display:none}
   .split li{grid-template-columns:1fr;gap:4px}
+  .body .field{grid-template-columns:1fr}
 }
 @media (max-width:520px){
   .cols.c4,.cols.c5,.stats{grid-template-columns:1fr}

@@ -40,12 +40,22 @@ M = {
   "aisle": "https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?auto=format&fit=crop&w=1600&q=75",
 }
 
+# Fields menu, footer column and /fields/ anchors share this list.
+FIELDS = [("Heleospace for Research", "/fields/", "Compute on Earth, access to orbit"),
+          ("AI &amp; model training", "/fields/#ai", "Train and run models on the Mesh"),
+          ("Earth &amp; climate", "/fields/#earth", "Process orbital data where it is captured"),
+          ("Chips &amp; space hardware", "/fields/#hardware", "Test hardware in real orbit"),
+          ("Networks &amp; autonomy", "/fields/#networks", "Links and agents from ground to orbit"),
+          ("Engineering &amp; simulation", "/fields/#engineering", "Heavy simulation, on demand")]
+FIELDS_LINKS = "".join(f'<li><a href="{h}">{n}</a></li>' for n, h, _ in FIELDS)
+
 NAV = [
   ("Technology", [("Agents", "/agents/", "Deploy an AI agent in minutes"),
                   ("Autonomous Mesh", "/mesh/", "Open software that routes and settles work"),
                   ("Machine economy", "/machines/", "Robots and fleets that buy and sell compute"),
                   ("Heleo-1", "/technology/", "A data center redesigned for orbit"),
-                  ("Research", "/research/", "Five Year 1 workstreams with labs")]),
+                  ("Our R&amp;D", "/research/", "Five Year 1 workstreams with labs")]),
+  ("Fields", FIELDS),
   ("Company", [("About", "/about/", "Why we exist and how we work"),
                ("Roadmap", "/roadmap/", "From the ground mesh to orbit")]),
   ("Updates", "/updates/"),
@@ -101,7 +111,7 @@ def header(path):
             parts.append(f'<a class="nav-top" href="{target}"{cur if path.startswith(target) else ""}>{name}</a>')
             continue
         active = any(path.startswith(h) for _, h, _ in target)
-        items = "".join(f'<a href="{h}"{cur if path.startswith(h) else ""}><b>{n}</b><span>{d}</span></a>' for n, h, d in target)
+        items = "".join(f'<a href="{h}"{cur if path.startswith(h) and "#" not in h else ""}><b>{n}</b><span>{d}</span></a>' for n, h, d in target)
         parts.append(f'<div class="nav-group{" is-active" if active else ""}"><button type="button" class="nav-top" aria-expanded="false" aria-controls="sub-{i}">{name}<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="nav-sub" id="sub-{i}">{items}</div></div>')
     parts.append('<a class="nav-top nav-contact" href="/contact/">Contact</a>')
     links = "".join(parts)
@@ -124,7 +134,8 @@ def footer():
         <p>Orbital data centers, run as an autonomous economy.</p>
       </div>
       <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
-      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/research/">Research</a></li></ul></div>
+      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/research/">Our R&amp;D</a></li></ul></div>
+      <div><h4>Fields</h4><ul>{FIELDS_LINKS}</ul></div>
       <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul>{SOCIAL_LINKS}<li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
     </div>
@@ -339,6 +350,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
         <li><b>Settlement</b><span>Payments that stay correct when nodes fail</span></li>
       </ul>
       <div class="btns"><a class="btn" href="/research/"><span class="arrow">Research program</span></a></div>
+      <p class="aside">Running research of your own? <a class="link" href="/fields/">See Heleospace for Research →</a></p>
     </div>
   </div>
 </section>
@@ -571,11 +583,61 @@ res_body = f"""
 <ol><li>Which shielding mass gives the best cost per unit of radiation reduction for the chosen compute module?</li><li>How much work can the mesh recover after a radiation event without losing settlement correctness?</li><li>At what launch price per kilogram does an orbital node match a ground node on cost per unit of compute?</li></ol>
 <h2 id="collaborate">Collaborate</h2>
 <p>We are looking for labs with beam-test, thermal-vacuum or distributed-systems capability, and for researchers who want to work on these questions with us. Results are shared with research partners and published where we can.</p>
+<p>Running research of your own and need compute or orbital access? See <a href="/fields/">Heleospace for Research</a>.</p>
 """
 write("/research/", head("Research", "Heleospace's Year 1 research program: radiation, shielding, fault-tolerant mesh, thermal-vacuum and settlement under stress.", "/research/")
       + header("/research/") + page_hero("Research", "Measured results, not claims", "Five workstreams with university and government labs remove the barriers to compute in orbit before the first flight.", M["cables"], "Photo: Taylor Vick, Unsplash")
       + article(res_body, [("origin", "From idea to paper"), ("paper", "Technical paper"), ("approach", "How we work"), ("workstreams", "Workstreams"), ("risks", "Risks"), ("questions", "Open questions"), ("collaborate", "Collaborate")],
                 '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Collaborate on research</span></a><a class="btn" href="/technology/">Technology</a>') + footer())
+
+# ---------------- FIELDS: Heleospace for Research ----------------
+def field(anchor, num, name, intro, items):
+    lis = "".join(f"<li>{i}</li>" for i in items)
+    return f"""<section class="field" id="{anchor}">
+<div><p class="eyebrow">Field {num}</p><h2>{name}</h2><p>{intro}</p></div>
+<ul>{lis}</ul>
+</section>
+"""
+
+fields_body = f"""
+<h2 id="why-orbit">Why orbit matters for research</h2>
+<p>Reaching space is still hard for a single lab. Missions take years, rideshare slots are scarce, and the conditions are difficult to reproduce on the ground. Heleo-1, our planned orbital data center, puts compute in orbit and connects it to Heleo Mesh, so researchers can run work in real space conditions without building a mission of their own.</p>
+<div class="cols c3">
+  <div class="col"><h3>Real space conditions</h3><p>Radiation, vacuum, heat limits and power constraints, measured rather than simulated.</p></div>
+  <div class="col"><h3>Flight heritage for your work</h3><p>Results from orbit carry weight in papers, grants and the next mission proposal.</p></div>
+  <div class="col"><h3>Ground and orbit as one network</h3><p>Develop on the ground mesh, then move the same workload to Heleo-1.</p></div>
+</div>
+<h2 id="access">Three levels of access</h2>
+<p>Start on the ground today and move to orbit as Heleo-1 comes online.</p>
+<div class="cols c3">
+  <div class="col"><span class="num">Available now</span><h3>Mesh access</h3><p>Compute on the ground mesh for training, inference and simulation. Research credits are available for selected labs.</p></div>
+  <div class="col"><span class="num">Reserve your place</span><h3>Orbital access</h3><p>Run your code or model on Heleo-1 in orbit. Develop first on the Heleo-1 ground twin, a testbed that mirrors the orbital system.</p></div>
+  <div class="col accent"><span class="num">By invitation</span><h3>Orbital partner</h3><p>A hosted experiment slot on a Heleospace mission, first access to orbital datasets, and joint mission recognition.</p></div>
+</div>
+<p class="note">Orbital access and hosted experiments are planned and subject to mission approval, licensing and export rules.</p>
+{field("ai", "01", "AI &amp; model training", "Train, fine-tune and run models on Heleo Mesh. Work is routed to the compute that fits it, and it settles automatically.",
+       ["Compute for model training and inference", "Run your model in orbit on Heleo-1", "Study how AI behaves under radiation and power limits", "Open-source tooling and research credits"])}
+{field("earth", "02", "Earth &amp; climate", "Process Earth observation data where it is captured. Send down the answer instead of the whole image.",
+       ["In-orbit processing for climate and environmental research", "Faster insight for disaster response studies", "Agriculture, oceans and maritime research", "Ground and orbit workflows on one network"])}
+{field("hardware", "03", "Chips &amp; space hardware", "Space is the hardest test environment there is. Find out how your hardware and software perform in real orbit.",
+       ["Radiation and fault behaviour of processors and memory", "Thermal and power-efficiency studies in vacuum", "Open orbital telemetry datasets", "Hosted experiment slots for partner labs"])}
+{field("networks", "04", "Networks &amp; autonomy", "A live network from Earth to orbit for research on communications and autonomous systems, with machines that trade machine-to-machine.",
+       ["Ground-to-orbit and inter-satellite links", "Delay-tolerant and fault-tolerant networking", "AI agents that negotiate, trade and settle in orbit", "Secure, decentralized coordination between machines"])}
+{field("engineering", "05", "Engineering &amp; simulation", "Heavy simulation when you need it, with no cluster to buy or run.",
+       ["Simulation and digital twins", "Design and verification workloads", "Burst compute for deadlines and grant cycles", "Pay only for the work that runs"])}
+<h2 id="together">How we work together</h2>
+<div class="cols c3">
+  <div class="col"><h3>You lead</h3><p>Your team owns its research questions, data and results.</p></div>
+  <div class="col"><h3>We support</h3><p>Compute, testbeds, orbital access and engineering help.</p></div>
+  <div class="col"><h3>We publish openly</h3><p>Results that use Heleo Mesh or Heleo-1 are shared and cited, so the whole field moves faster.</p></div>
+</div>
+<h2 id="apply">Bring your research to the Mesh</h2>
+<p>Tell us about your lab, your field and what you want to run, on Earth or in orbit.</p>
+"""
+write("/fields/", head("Heleospace for Research", "Heleospace supports research. Compute on Heleo Mesh today, and access to orbit through Heleo-1, our planned orbital data center.", "/fields/")
+      + header("/fields/") + page_hero("Fields · Heleospace for Research", "We support the research. You make the discovery.", "Heleospace gives labs, universities and agencies compute on Heleo Mesh today, and a way into orbit through Heleo-1, our planned orbital data center. Your team leads the work and keeps the credit. We provide the platform it runs on.", M["network"], "Earth at night · NASA, via Unsplash")
+      + article(fields_body, [("why-orbit", "Why orbit"), ("access", "Levels of access"), ("ai", "AI &amp; model training"), ("earth", "Earth &amp; climate"), ("hardware", "Chips &amp; space hardware"), ("networks", "Networks &amp; autonomy"), ("engineering", "Engineering &amp; simulation"), ("together", "Working together"), ("apply", "Apply")],
+                '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/">Our R&amp;D</a>', updated="21 November 2026") + footer())
 
 # ---------------- ROADMAP ----------------
 road_body = """
