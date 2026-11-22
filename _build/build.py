@@ -40,9 +40,8 @@ M = {
   "aisle": "https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?auto=format&fit=crop&w=1600&q=75",
 }
 
-# Research menu and footer column share this list (Our R&D first, then the overview and the field pages).
-FIELDS = [("Our R&amp;D", "/research/heleo/", "Five Year 1 workstreams with labs"),
-          ("Research", "/research/", "Compute on Earth, access to orbit"),
+# Research menu and footer column share this list (Our research first, then the field pages).
+FIELDS = [("Our research", "/research/heleo/", "Five Year 1 workstreams with labs"),
           ("AI &amp; model training", "/research/ai/", "Train and run models on the Mesh"),
           ("Earth &amp; climate", "/research/earth/", "Process orbital data where it is captured"),
           ("Chips &amp; space hardware", "/research/hardware/", "Test hardware in real orbit"),
@@ -97,6 +96,7 @@ def head(title, desc, path, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&text=%26&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
 {extra}</head>
 <body>
@@ -350,7 +350,7 @@ home = head("Heleospace — Orbital data centers, run as an autonomous economy",
         <li><b>Settlement</b><span>Payments that stay correct when nodes fail</span></li>
       </ul>
       <div class="btns"><a class="btn" href="/research/heleo/"><span class="arrow">Research program</span></a></div>
-      <p class="aside">Running research of your own? <a class="link" href="/research/">See how we support it →</a></p>
+      <p class="aside">Running research of your own? <a class="link" href="/research/heleo/#fields">See how we support it →</a></p>
     </div>
   </div>
 </section>
@@ -553,47 +553,9 @@ write("/technology/", head("Technology · Heleo-1", "How Heleospace handles radi
       + article(tech_body, [("physics", "The physics"), ("radiation", "Radiation"), ("thermal", "Heat and energy"), ("heleo-1", "Heleo-1"), ("launch", "Launch and servicing")],
                 '<a class="btn primary" href="/research/heleo/"><span class="arrow">Research program</span></a><a class="btn" href="/roadmap/">Roadmap</a>', updated="13 November 2026") + footer())
 
-# ---------------- RESEARCH ----------------
-res_body = f"""
-<h2 id="origin">From idea to paper</h2>
-<p>Concept originated by {ORIGINATOR}.</p>
-<div class="table-wrap"><table>
-<tr><th>When</th><th>Milestone</th></tr>
-<tr><td>{ORIGIN_DATE}</td><td><strong>Origin.</strong> {ORIGINATOR} first describes the Autonomous Mesh in {origin_link()}.</td></tr>
-<tr><td>November 2026</td><td><strong>Technical paper, Version 0.1.</strong> The formal design: architecture, settlement, routing, the research program and the risks (below).</td></tr>
-<tr><td>Years 1–2</td><td><strong>Measured results.</strong> Findings from the five lab workstreams, published with partner labs where they contribute.</td></tr>
-</table></div>
-<h2 id="paper">Technical paper</h2>
-<p><strong>The Autonomous Mesh: a technical paper</strong> (Version 0.1, November 2026). Eric Chan, Heleospace. How compute nodes on Earth and in orbit can find work, agree a price and settle automatically, with the settlement design, radiation- and heat-aware routing, the Heleo-1 reference satellite, our research program and the risks behind every figure.</p>
-{('<p><a href="' + PAPER_PDF + '">Read the paper (PDF)</a></p>') if PAPER_PDF else ('<p><em>Publication coming soon.</em> To request an early copy for research or partnership, write to <a href="mailto:' + CONTACT + '">' + CONTACT + '</a>.</p>')}
-<h2 id="approach">How we work</h2>
-<p>Years 1 and 2 are research-led. We work with university and government research labs on joint testing, shared testbeds and co-authored papers. Every workstream produces a measured result rather than a claim, and every collaboration is also a route to the first users of Heleo Mesh.</p>
-<h2 id="workstreams">Five Year 1 workstreams</h2>
-<div class="table-wrap"><table>
-<tr><th>Workstream</th><th>What is done</th><th>Output</th></tr>
-<tr><td>1. Radiation</td><td>Beam-test the selected low-power compute module at a proton or heavy-ion facility</td><td>Measured error and latch-up rates, total dose tolerance</td></tr>
-<tr><td>2. Shielding</td><td>Compare shielding options by mass against radiation reduction</td><td>The lightest shielding that meets the dose target</td></tr>
-<tr><td>3. Fault-tolerant mesh</td><td>Combine the hardware supervisor with mesh-level recovery on the ground testbed, under injected faults</td><td>Recovery time and data-loss figures</td></tr>
-<tr><td>4. Thermal-vacuum</td><td>Test the compute module and radiator in a vacuum chamber; validate heat-aware scheduling</td><td>Verified heat limits per node</td></tr>
-<tr><td>5. Settlement under stress</td><td>Run settlement between ground nodes while faults are injected</td><td>Proof that payments stay correct when nodes fail</td></tr>
-</table></div>
-<h2 id="risks">Risks we track openly</h2>
-<ul><li>Thermal performance at high compute density.</li><li>Long-term memory degradation under radiation.</li><li>Inter-satellite link cost and timing.</li><li>Ground-station bandwidth.</li><li>Launch price: the business case depends on launch costs falling.</li></ul>
-<h2 id="questions">Open questions</h2>
-<ol><li>Which shielding mass gives the best cost per unit of radiation reduction for the chosen compute module?</li><li>How much work can the mesh recover after a radiation event without losing settlement correctness?</li><li>At what launch price per kilogram does an orbital node match a ground node on cost per unit of compute?</li></ol>
-<h2 id="collaborate">Collaborate</h2>
-<p>We are looking for labs with beam-test, thermal-vacuum or distributed-systems capability, and for researchers who want to work on these questions with us. Results are shared with research partners and published where we can.</p>
-<p>Running research of your own and need compute or orbital access? See <a href="/research/">how we support your research</a>.</p>
-"""
-write("/research/heleo/", head("Our R&D", "Heleospace's Year 1 research program: radiation, shielding, fault-tolerant mesh, thermal-vacuum and settlement under stress.", "/research/heleo/")
-      + header("/research/heleo/") + page_hero("Research · Our R&amp;D", "Measured results, not claims", "Five workstreams with university and government labs remove the barriers to compute in orbit before the first flight.", M["cables"], "Photo: Taylor Vick, Unsplash")
-      + article(res_body, [("origin", "From idea to paper"), ("paper", "Technical paper"), ("approach", "How we work"), ("workstreams", "Workstreams"), ("risks", "Risks"), ("questions", "Open questions"), ("collaborate", "Collaborate")],
-                '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Collaborate on research</span></a><a class="btn" href="/technology/">Technology</a>') + footer())
-
-# ---------------- RESEARCH: overview and field pages ----------------
-# Old /fields/#field and /research/#section links land here; send them to the new pages.
-OLD_ANCHORS = """<script>(function(){var h=location.hash.slice(1),f=["ai","earth","hardware","networks","engineering"],r=["origin","paper","approach","workstreams","risks","questions","collaborate"];
-if(f.indexOf(h)>-1)location.replace("/research/"+h+"/");else if(r.indexOf(h)>-1)location.replace("/research/heleo/#"+h);})();</script>
+# ---------------- RESEARCH: field pages ----------------
+# /fields/ and /research/ redirect to /research/heleo/ (see .htaccess); old #field links go on to the field page.
+OLD_ANCHORS = """<script>(function(){var h=location.hash.slice(1);if(["ai","earth","hardware","networks","engineering"].indexOf(h)>-1)location.replace("/research/"+h+"/");})();</script>
 """
 
 def field(slug, num, name, intro, items):
@@ -636,7 +598,7 @@ def field_page(slug, num, name, desc, h1, lede, img, credit, intro, can, questio
     rail = [("overview", "Overview"), ("what", "What you can do"), ("questions", "Questions" if q_title.startswith("Research") else q_title), ("how", "How a project runs"), ("together", "Provide and bring"), ("apply", "Apply")]
     write(f"/research/{slug}/", head(f"{name.replace('&amp;', '&')} · Research", desc, f"/research/{slug}/")
           + header(f"/research/{slug}/") + page_hero(f"Research · Field {num}", h1, lede, img, credit)
-          + article(body, rail, f'<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/">All research</a>', updated="22 November 2026") + footer())
+          + article(body, rail, f'<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/heleo/#fields">All fields</a>', updated="22 November 2026") + footer())
 
 FIELD_NAMES = [("ai", "AI &amp; model training"), ("earth", "Earth &amp; climate"), ("hardware", "Chips &amp; space hardware"), ("networks", "Networks &amp; autonomy"), ("engineering", "Engineering &amp; simulation")]
 
@@ -698,7 +660,7 @@ field_page("hardware", "03", "Chips &amp; space hardware",
   "Beam tests and vacuum chambers predict how hardware behaves in space. Heleo-1 is designed to show how it actually does, over years, in a real orbit.",
   M["arrays"], "Station solar arrays across Earth's horizon · NASA",
   """<p>Commercial chips are fast and cheap, but nobody knows exactly how long they last in orbit until they fly. Ground tests narrow the question; flight data answers it. Heleo-1 is planned to carry commercial compute modules in a dawn-dusk orbit at about 550 km and to record how they behave, every day of the mission.</p>
-<p>This is also the core of our own research. Our Year 1 workstreams on radiation, shielding and thermal-vacuum testing build the ground results that Heleo-1 will check in flight. <a class="link" href="/research/heleo/">See our R&amp;D</a>.</p>""",
+<p>This is also the core of our own research. Our Year 1 workstreams on radiation, shielding and thermal-vacuum testing build the ground results that Heleo-1 will check in flight. <a class="link" href="/research/heleo/">See our research</a>.</p>""",
   [("Radiation and fault behaviour", "Measure error rates, latch-ups and recovery for processors and memory, and compare flight data with beam-test predictions."),
    ("Thermal and power studies", "Study efficiency and heat limits in vacuum, where heat can only leave as radiation."),
    ("Open orbital telemetry", "Datasets of temperatures, power and error counts from Heleo-1, to be published for research."),
@@ -764,23 +726,36 @@ field_page("engineering", "05", "Engineering &amp; simulation",
   ["Your models, solvers and input data", "An estimate of the compute you need", "A named lead researcher", "A plan to publish or share results"],
   "Engineering, aerospace and simulation research groups are a good fit.")
 
-overview_body = f"""
-<h2 id="why-orbit">Why orbit matters for research</h2>
-<p>Reaching space is still hard for a single lab. Missions take years, rideshare slots are scarce, and the conditions are difficult to reproduce on the ground. Heleo-1, our planned orbital data center, puts compute in orbit and connects it to Heleo Mesh, so researchers can run work in real space conditions without building a mission of their own.</p>
-<div class="cols c3">
-  <div class="col"><h3>Real space conditions</h3><p>Radiation, vacuum, heat limits and power constraints, measured rather than simulated.</p></div>
-  <div class="col"><h3>Flight heritage for your work</h3><p>Results from orbit carry weight in papers, grants and the next mission proposal.</p></div>
-  <div class="col"><h3>Ground and orbit as one network</h3><p>Develop on the ground mesh, then move the same workload to Heleo-1.</p></div>
-</div>
-<h2 id="access">Three levels of access</h2>
-<p>Start on the ground today and move to orbit as Heleo-1 comes online.</p>
-<div class="cols c3">
-  <div class="col"><span class="num">Available now</span><h3>Mesh access</h3><p>Compute on the ground mesh for training, inference and simulation. Research credits are available for selected labs.</p></div>
-  <div class="col"><span class="num">Reserve your place</span><h3>Orbital access</h3><p>Run your code or model on Heleo-1 in orbit. Develop first on the Heleo-1 ground twin, a testbed that mirrors the orbital system.</p></div>
-  <div class="col accent"><span class="num">By invitation</span><h3>Orbital partner</h3><p>A hosted experiment slot on a Heleospace mission, first access to orbital datasets, and joint mission recognition.</p></div>
-</div>
-<p class="note">Orbital access and hosted experiments are planned and subject to mission approval, licensing and export rules.</p>
-<h2 id="fields">Five fields</h2>
+# ---------------- RESEARCH ----------------
+res_body = f"""
+<h2 id="origin">From idea to paper</h2>
+<p>Concept originated by {ORIGINATOR}.</p>
+<div class="table-wrap"><table>
+<tr><th>When</th><th>Milestone</th></tr>
+<tr><td>{ORIGIN_DATE}</td><td><strong>Origin.</strong> {ORIGINATOR} first describes the Autonomous Mesh in {origin_link()}.</td></tr>
+<tr><td>November 2026</td><td><strong>Technical paper, Version 0.1.</strong> The formal design: architecture, settlement, routing, the research program and the risks (below).</td></tr>
+<tr><td>Years 1–2</td><td><strong>Measured results.</strong> Findings from the five lab workstreams, published with partner labs where they contribute.</td></tr>
+</table></div>
+<h2 id="paper">Technical paper</h2>
+<p><strong>The Autonomous Mesh: a technical paper</strong> (Version 0.1, November 2026). Eric Chan, Heleospace. How compute nodes on Earth and in orbit can find work, agree a price and settle automatically, with the settlement design, radiation- and heat-aware routing, the Heleo-1 reference satellite, our research program and the risks behind every figure.</p>
+{('<p><a href="' + PAPER_PDF + '">Read the paper (PDF)</a></p>') if PAPER_PDF else ('<p><em>Publication coming soon.</em> To request an early copy for research or partnership, write to <a href="mailto:' + CONTACT + '">' + CONTACT + '</a>.</p>')}
+<h2 id="approach">How we work</h2>
+<p>Years 1 and 2 are research-led. We work with university and government research labs on joint testing, shared testbeds and co-authored papers. Every workstream produces a measured result rather than a claim, and every collaboration is also a route to the first users of Heleo Mesh.</p>
+<h2 id="workstreams">Five Year 1 workstreams</h2>
+<div class="table-wrap"><table>
+<tr><th>Workstream</th><th>What is done</th><th>Output</th></tr>
+<tr><td>1. Radiation</td><td>Beam-test the selected low-power compute module at a proton or heavy-ion facility</td><td>Measured error and latch-up rates, total dose tolerance</td></tr>
+<tr><td>2. Shielding</td><td>Compare shielding options by mass against radiation reduction</td><td>The lightest shielding that meets the dose target</td></tr>
+<tr><td>3. Fault-tolerant mesh</td><td>Combine the hardware supervisor with mesh-level recovery on the ground testbed, under injected faults</td><td>Recovery time and data-loss figures</td></tr>
+<tr><td>4. Thermal-vacuum</td><td>Test the compute module and radiator in a vacuum chamber; validate heat-aware scheduling</td><td>Verified heat limits per node</td></tr>
+<tr><td>5. Settlement under stress</td><td>Run settlement between ground nodes while faults are injected</td><td>Proof that payments stay correct when nodes fail</td></tr>
+</table></div>
+<h2 id="risks">Risks we track openly</h2>
+<ul><li>Thermal performance at high compute density.</li><li>Long-term memory degradation under radiation.</li><li>Inter-satellite link cost and timing.</li><li>Ground-station bandwidth.</li><li>Launch price: the business case depends on launch costs falling.</li></ul>
+<h2 id="questions">Open questions</h2>
+<ol><li>Which shielding mass gives the best cost per unit of radiation reduction for the chosen compute module?</li><li>How much work can the mesh recover after a radiation event without losing settlement correctness?</li><li>At what launch price per kilogram does an orbital node match a ground node on cost per unit of compute?</li></ol>
+<h2 id="fields">Research with us</h2>
+<p>Running research of your own? We support labs in five fields with compute on Heleo Mesh today and a path to orbit on Heleo-1.</p>
 {field("ai", "01", "AI &amp; model training", "Train, fine-tune and run models on Heleo Mesh. Work is routed to the compute that fits it, and it settles automatically.",
        ["Compute for model training and inference", "Run your model in orbit on Heleo-1", "Study how AI behaves under radiation and power limits", "Open-source tooling and research credits"])}
 {field("earth", "02", "Earth &amp; climate", "Process Earth observation data where it is captured. Send down the answer instead of the whole image.",
@@ -791,21 +766,13 @@ overview_body = f"""
        ["Ground-to-orbit and inter-satellite links", "Delay-tolerant and fault-tolerant networking", "AI agents that negotiate, trade and settle in orbit", "Secure, decentralized coordination between machines"])}
 {field("engineering", "05", "Engineering &amp; simulation", "Heavy simulation when you need it, with no cluster to buy or run.",
        ["Simulation and digital twins", "Design and verification workloads", "Burst compute for deadlines and grant cycles", "Pay only for the work that runs"])}
-<h2 id="our-rd">Our own R&amp;D</h2>
-<p>Alongside the research we support, we run our own program: five Year 1 workstreams with university and government labs on radiation, shielding, fault tolerance, thermal-vacuum and settlement. <a class="link" href="/research/heleo/">See our R&amp;D →</a></p>
-<h2 id="together">How we work together</h2>
-<div class="cols c3">
-  <div class="col"><h3>You lead</h3><p>Your team owns its research questions, data and results.</p></div>
-  <div class="col"><h3>We support</h3><p>Compute, testbeds, orbital access and engineering help.</p></div>
-  <div class="col"><h3>We publish openly</h3><p>Results that use Heleo Mesh or Heleo-1 are shared and cited, so the whole field moves faster.</p></div>
-</div>
-<h2 id="apply">Bring your research to the Mesh</h2>
-<p>Tell us about your lab, your field and what you want to run, on Earth or in orbit.</p>
+<h2 id="collaborate">Collaborate</h2>
+<p>We are looking for labs with beam-test, thermal-vacuum or distributed-systems capability, and for researchers who want to work on these questions with us. Results are shared with research partners and published where we can.</p>
 """
-write("/research/", head("Research", "Heleospace supports research. Compute on Heleo Mesh today, and access to orbit through Heleo-1, our planned orbital data center.", "/research/", OLD_ANCHORS)
-      + header("/research/") + page_hero("Research", "We support the research. You make the discovery.", "Heleospace gives labs, universities and agencies compute on Heleo Mesh today, and a way into orbit through Heleo-1, our planned orbital data center. Your team leads the work and keeps the credit. We provide the platform it runs on.", M["network"], "Earth at night · NASA, via Unsplash")
-      + article(overview_body, [("why-orbit", "Why orbit"), ("access", "Levels of access"), ("fields", "Five fields"), ("our-rd", "Our R&amp;D"), ("together", "Working together"), ("apply", "Apply")],
-                '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/heleo/">Our R&amp;D</a>', updated="22 November 2026") + footer())
+write("/research/heleo/", head("Our research", "Heleospace's Year 1 research program: radiation, shielding, fault-tolerant mesh, thermal-vacuum and settlement under stress.", "/research/heleo/", OLD_ANCHORS)
+      + header("/research/heleo/") + page_hero("Our research", "Measured results, not claims", "Five workstreams with university and government labs remove the barriers to compute in orbit before the first flight.", M["cables"], "Photo: Taylor Vick, Unsplash")
+      + article(res_body, [("origin", "From idea to paper"), ("paper", "Technical paper"), ("approach", "How we work"), ("workstreams", "Workstreams"), ("risks", "Risks"), ("questions", "Open questions"), ("fields", "Research with us"), ("collaborate", "Collaborate")],
+                '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Collaborate on research</span></a><a class="btn" href="/technology/">Technology</a>') + footer())
 
 # ---------------- ROADMAP ----------------
 road_body = """

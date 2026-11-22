@@ -1,13 +1,14 @@
 /* Heleospace · heleo.space
    Orbital Editorial, company edition: warm light pages, cinematic dark bands,
    one accent taken from the Heleospace mark (coral). Archivo (wide) for display,
-   Newsreader for reading. */
+   Newsreader for reading. The & in display text comes from Hanken Grotesk
+   (a font file with only that glyph), because Archivo's & reads like an 8. */
 :root{
   --bg:#F4F2ED; --surface:#FBFAF7; --ink:#111214; --text:#24262A; --muted:#5E6470;
   --hair:rgba(17,18,20,.12); --rule:#111214;
   --accent:#C2421F; --coral:#FF5E3A; --accent-soft:rgba(194,66,31,.08);
   --night:#07080A; --night-2:#0E1014; --sun:#FFF3DC; --night-text:#E6E1D6; --night-muted:#9AA6B4; --night-hair:rgba(255,243,220,.14);
-  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --display:"Hanken Grotesk","Archivo","Helvetica Neue",Arial,sans-serif;
   --read:"Newsreader","Iowan Old Style",Georgia,serif;
   --wrap:1240px; --gutter:clamp(20px,4.5vw,56px); --measure:68ch;
   --header-h:72px;
