@@ -420,14 +420,3 @@ html,body{max-width:100%;overflow-x:clip}
 @media (max-width:520px){
   .bk-grid.four{grid-template-columns:1fr}
 }
-
-/* Heleo-1 3D viewers (/heleo-1/model/, /heleo-1/launch/): the app runs in an iframe inside the site template */
-.viewer{background:var(--night);color:var(--night-text);padding:calc(var(--header-h) + clamp(32px,6vh,64px)) 0 clamp(40px,7vh,72px)}
-.viewer-head .lede{max-width:60ch}
-.viewer-frame{margin:clamp(28px,5vh,48px) auto 0;max-width:1600px;padding:0 var(--gutter)}
-.viewer-frame iframe{display:block;width:100%;height:min(calc(100vh - var(--header-h) - 32px),900px);min-height:560px;border:1px solid var(--night-hair);background:#07090d}
-.viewer-foot{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:24px}
-@media (max-width:760px){
-  .viewer-frame{padding:0}
-  .viewer-frame iframe{border-left:0;border-right:0;height:calc(100vh - var(--header-h));min-height:620px}
-}
