@@ -1,5 +1,6 @@
 # Heleospace: show the site's own "Lost in orbit" page for missing URLs.
 ErrorDocument 404 /404.html
 
-# The Fields page moved to /research/ (Nov 2026). Old #field links are forwarded by a script on /research/.
-RedirectMatch 301 ^/fields/?(index\.html)?$ /research/
+# The Fields page and the Research overview were removed (Nov 2026); both go to Our research.
+# Old #field links are forwarded to the field pages by a script on /research/heleo/.
+RedirectMatch 301 ^/(fields|research)/?(index\.html)?$ /research/heleo/
