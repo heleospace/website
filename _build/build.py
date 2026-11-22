@@ -134,7 +134,7 @@ def footer():
         <p>Orbital data centers, run as an autonomous economy.</p>
       </div>
       <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
-      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/heleo-1/model/">Heleo-1 3D model</a></li><li><a href="/heleo-1/launch/">Heleo-1 launch</a></li></ul></div>
+      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/heleo-1/model/" target="_blank" rel="noopener">Heleo-1 3D model</a></li><li><a href="/heleo-1/launch/" target="_blank" rel="noopener">Heleo-1 launch</a></li></ul></div>
       <div><h4>Research</h4><ul>{FIELDS_LINKS}</ul></div>
       <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul>{SOCIAL_LINKS}<li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
@@ -589,36 +589,6 @@ write("/research/", head("Research", "Heleospace's Year 1 research program: radi
       + header("/research/") + page_hero("Research", "Measured results, not claims", "Five workstreams with university and government labs remove the barriers to compute in orbit before the first flight.", M["cables"], "Photo: Taylor Vick, Unsplash")
       + article(res_body, [("origin", "From idea to paper"), ("paper", "Technical paper"), ("approach", "How we work"), ("workstreams", "Workstreams"), ("risks", "Risks"), ("questions", "Open questions"), ("collaborate", "Collaborate")],
                 '<a class="btn primary" href="/contact/?topic=research"><span class="arrow">Collaborate on research</span></a><a class="btn" href="/technology/">Technology</a>') + footer())
-
-# ---------------- HELEO-1 viewers ----------------
-# The 3D viewers are hand-written in site/heleo-1/<name>/app.html; these pages frame them in the site template.
-def viewer_page(path, title, desc, h1, lede, app_title, other):
-    o_href, o_text = other
-    return (head(title, desc, path) + header(path) + f"""<main id="main">
-<section class="viewer on-night">
-  <div class="wrap viewer-head">
-    <p class="eyebrow">Heleo-1</p>
-    <h1 class="display">{h1}</h1>
-    <p class="lede">{lede}</p>
-  </div>
-  <div class="viewer-frame"><iframe src="{path}app.html" title="{app_title}" allow="fullscreen"></iframe></div>
-  <div class="wrap viewer-foot">
-    <a class="link" href="{path}app.html">Open full screen →</a>
-    <a class="link" href="{o_href}">{o_text} →</a>
-    <a class="link" href="/technology/">About Heleo-1 →</a>
-  </div>
-</section>
-</main>
-""" + footer())
-
-write("/heleo-1/model/", viewer_page("/heleo-1/model/", "Heleo-1 3D model",
-      "Explore Heleo-1, the Heleospace reference satellite, in 3D: solar wings, radiators, the compute pod and the laser link.",
-      "Heleo-1 in 3D", "Turn the spacecraft, open the compute pod and click any part to see what it does. A concept model; proportions are approximate.",
-      "Interactive 3D model of Heleo-1", ("/heleo-1/launch/", "Watch the launch")))
-write("/heleo-1/launch/", viewer_page("/heleo-1/launch/", "Heleo-1 launch",
-      "Follow Heleo-1 from the launch pad to a 550 km dawn-dusk orbit in an interactive 3D animation.",
-      "Heleo-1 launch", "From the pad to a 550 km dawn-dusk orbit. Timings, altitudes and speeds are approximate planning values, not a real flight plan.",
-      "3D animation of the Heleo-1 launch", ("/heleo-1/model/", "Explore the 3D model")))
 
 # ---------------- FIELDS: Research ----------------
 def field(anchor, num, name, intro, items):

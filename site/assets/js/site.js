@@ -2,7 +2,7 @@
    Updates: every post is a Markdown file in /updates/posts/. List it in /updates/posts.json. */
 (function () {
   var header = document.querySelector('.site-header');
-  var nightHero = document.querySelector('.hero, .page-hero, .viewer');
+  var nightHero = document.querySelector('.hero, .page-hero');
 
   function onScroll() {
     if (!header) return;
