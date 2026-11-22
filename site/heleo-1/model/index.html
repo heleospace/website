@@ -271,7 +271,7 @@ const inc=97.6*Math.PI/180;const oN=new THREE.Vector3(Math.sin(inc),Math.cos(inc
 const oRing=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({length:256},(_,i)=>{const t=i/256*Math.PI*2;return oU.clone().multiplyScalar(Math.cos(t)*RO).addScaledVector(oV,Math.sin(t)*RO);})),new THREE.LineBasicMaterial({color:0xffe600,transparent:true,opacity:.6}));oScene.add(oRing);
 let oSat=null,simT=0,orbitMode=false;const ORB=5736,DAY=86164;let SPEED=717,spIdx=0;
 const D2R=Math.PI/180,FOOT=14.97*D2R;const ll=(la,lo,r)=>new THREE.Vector3(Math.cos(la)*Math.cos(lo),Math.sin(la),-Math.cos(la)*Math.sin(lo)).multiplyScalar(r);
-const myDir=ll(3.14*D2R,101.69*D2R,1);
+const myDir=ll(78*D2R,15*D2R,1);
 const myDot=new THREE.Mesh(new THREE.SphereGeometry(.07,16,12),new THREE.MeshBasicMaterial({color:0xffe600}));myDot.position.copy(myDir).multiplyScalar(RE*1.012);oEarth.add(myDot);
 const fa=new THREE.Vector3().crossVectors(myDir,new THREE.Vector3(0,1,0)).normalize(),fb=new THREE.Vector3().crossVectors(myDir,fa);
 const footMat=new THREE.LineBasicMaterial({color:0xffe600,transparent:true,opacity:.55});
@@ -280,7 +280,7 @@ const TRK=1600,trkArr=new Float32Array(TRK*3);let trkN=0,lastSample=-1;const trk
 const trk=new THREE.Line(trkGeo,new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.85}));trk.frustumCulled=false;trk.renderOrder=3;foot.renderOrder=3;oEarth.add(trk);
 const linkGeo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]);const link=new THREE.Line(linkGeo,new THREE.LineBasicMaterial({color:0x5dcaa5}));link.visible=false;oScene.add(link);
 let sampIn=false,inView=false,passes=0,passDay=0,contactMin=0;const myW=new THREE.Vector3(),eInv=new THREE.Quaternion(),tv=new THREE.Vector3();
-const myLbl=document.createElement('div');myLbl.className='lbl';myLbl.textContent='Kuala Lumpur station';myLbl.style.display='none';stage.appendChild(myLbl);
+const myLbl=document.createElement('div');myLbl.className='lbl';myLbl.textContent='Polar ground station';myLbl.style.display='none';stage.appendChild(myLbl);
 
 const sp=[];for(let i=0;i<1800;i++){const v=new THREE.Vector3().randomDirection().multiplyScalar(320+Math.random()*120);if(v.y>-60)sp.push(v.x,v.y,v.z);}
 const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
@@ -366,7 +366,7 @@ function frame(){
     v.copy(myW).project(oCam);const facing=myW.clone().normalize().dot(oCam.position.clone().sub(myW).normalize())>0;
     if(v.z<1&&facing){myLbl.style.display='';myLbl.style.left=((v.x+1)/2*stage.clientWidth)+'px';myLbl.style.top=((1-v.y)/2*stage.clientHeight)+'px';}else myLbl.style.display='none';
     const n=Math.floor(simT/ORB)+1,hrs=(simT%86400)/3600,hh=String(Math.floor(hrs)).padStart(2,'0'),mm=String(Math.floor(hrs%1*60)).padStart(2,'0');
-    setCard(nowIn?'In contact with Kuala Lumpur':'Orbit view',`Orbit ${((n-1)%15)+1} of about 15 today · elapsed ${hh}h ${mm}m. Malaysia passes today: ${passes} (about ${Math.round(contactMin)} min of contact). ${nowIn?'Heleo-1 is inside the station circle, so it can downlink straight to Malaysia now.':'Outside the circle, data reaches Malaysia through the laser relay link or another ground station plus fibre.'} The white line is the ground track: each pass shifts about 24° west as Earth turns.`,`Speed: 1 second = ${Math.round(SPEED/60)} minutes. Heleo-1 is drawn hugely enlarged. The yellow dot sits at Kuala Lumpur's latitude and longitude; the continents are generated, not real geography.`,false);
+    setCard(nowIn?'In contact with the ground station':'Orbit view',`Orbit ${((n-1)%15)+1} of about 15 today · elapsed ${hh}h ${mm}m. Ground-station passes today: ${passes} (about ${Math.round(contactMin)} min of contact). ${nowIn?'Heleo-1 is inside the station circle, so it can downlink straight to the ground station now.':'Outside the circle, data reaches the ground through the laser relay link or another ground station plus fibre.'} The white line is the ground track: each pass shifts about 24° west as Earth turns.`,`Speed: 1 second = ${Math.round(SPEED/60)} minutes. Heleo-1 is drawn hugely enlarged. The yellow dot marks an example polar ground station, shown to explain contact; the continents are generated, not real geography.`,false);
     oCtl.update();renderer.render(oScene,oCam);requestAnimationFrame(frame);return;}
   if(deployT!==deployTarget){deployT+=Math.sign(deployTarget-deployT)*dt*.55;if(Math.abs(deployT-deployTarget)<.01)deployT=deployTarget;}
   applyDeploy();
