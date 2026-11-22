@@ -1,14 +1,13 @@
 /* Heleospace · heleo.space
    Orbital Editorial, company edition: warm light pages, cinematic dark bands,
-   one accent taken from the Heleospace mark (coral). Archivo (wide) for display,
-   Newsreader for reading. The & in display text comes from Hanken Grotesk
-   (a font file with only that glyph), because Archivo's & reads like an 8. */
+   one accent taken from the Heleospace mark (coral). Mona Sans (wide) for display,
+   Newsreader for reading. */
 :root{
   --bg:#F4F2ED; --surface:#FBFAF7; --ink:#111214; --text:#24262A; --muted:#5E6470;
   --hair:rgba(17,18,20,.12); --rule:#111214;
   --accent:#C2421F; --coral:#FF5E3A; --accent-soft:rgba(194,66,31,.08);
   --night:#07080A; --night-2:#0E1014; --sun:#FFF3DC; --night-text:#E6E1D6; --night-muted:#9AA6B4; --night-hair:rgba(255,243,220,.14);
-  --display:"Hanken Grotesk","Archivo","Helvetica Neue",Arial,sans-serif;
+  --display:"Mona Sans","Helvetica Neue",Arial,sans-serif;
   --read:"Newsreader","Iowan Old Style",Georgia,serif;
   --wrap:1240px; --gutter:clamp(20px,4.5vw,56px); --measure:68ch;
   --header-h:72px;
@@ -45,7 +44,7 @@ h3{font-family:var(--display);font-stretch:112%;font-weight:500;font-size:1.25re
 .on-night .btn.primary{background:var(--sun);color:var(--night);border-color:var(--sun)}
 .on-night .btn:hover{border-color:var(--coral);color:var(--coral)}
 .on-night .btn.primary:hover{background:var(--coral);border-color:var(--coral);color:var(--night)}
-.arrow::after{content:"→";font-family:var(--display);transition:transform .2s}
+.arrow::after{content:"→";display:inline-block;margin-left:.4em;font-family:var(--display);transition:transform .2s}
 a:hover .arrow::after,.arrow:hover::after{transform:translateX(3px)}
 .link{font-family:var(--display);font-size:.95rem;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px}
 .link:hover{color:var(--accent);border-color:var(--accent)}

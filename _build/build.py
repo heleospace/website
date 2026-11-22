@@ -95,8 +95,7 @@ def head(title, desc, path, extra=""):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&text=%26&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
 {extra}</head>
 <body>
@@ -192,7 +191,7 @@ MESH_SVG = """<svg viewBox="0 0 1200 420" role="img" aria-label="Diagram: orbita
 <g fill="#07080A" stroke="#FFF3DC" stroke-width="1.4">
 <rect x="176" y="191" width="28" height="28" transform="rotate(45 190 205)"/><rect x="406" y="106" width="28" height="28" transform="rotate(45 420 120)"/><rect x="766" y="106" width="28" height="28" transform="rotate(45 780 120)"/><rect x="996" y="191" width="28" height="28" transform="rotate(45 1010 205)"/></g>
 <g fill="#FF5E3A"><circle cx="330" cy="352" r="9"/><circle cx="600" cy="335" r="9"/><circle cx="870" cy="352" r="9"/></g>
-<g font-family="Archivo, Arial, sans-serif" font-size="17" fill="#9AA6B4">
+<g font-family="Mona Sans, Arial, sans-serif" font-size="17" fill="#9AA6B4">
 <text x="420" y="84" text-anchor="middle">Orbital node</text><text x="780" y="84" text-anchor="middle">Orbital node</text>
 <text x="190" y="172" text-anchor="middle">Orbital node</text><text x="1010" y="172" text-anchor="middle">Orbital node</text>
 <text x="330" y="394" text-anchor="middle">Ground data center</text><text x="600" y="377" text-anchor="middle">Research lab</text><text x="870" y="394" text-anchor="middle">Ground data center</text>
@@ -936,7 +935,7 @@ BK_CLEAR = f"""<svg class="bk-clear" viewBox="0 0 900 300" role="img" aria-label
 <rect x="83.6" y="54.6" width="732.8" height="190.8" fill="none" stroke="#C2421F" stroke-width="1.5" stroke-dasharray="6 6"/>
 <rect x="130" y="101" width="640" height="97.6" fill="none" stroke="#C2421F" stroke-opacity=".45"/>
 <g fill="#C2421F" fill-opacity=".14"><rect x="83.6" y="54.6" width="46.4" height="46.4"/><rect x="770" y="54.6" width="46.4" height="46.4"/><rect x="83.6" y="198.6" width="46.4" height="46.8"/><rect x="770" y="198.6" width="46.4" height="46.8"/></g>
-<g fill="#C2421F" font-family="Archivo, Arial, sans-serif" font-size="24" text-anchor="middle"><text x="106.8" y="86">x</text><text x="793.2" y="86">x</text><text x="106.8" y="230">x</text><text x="793.2" y="230">x</text></g>
+<g fill="#C2421F" font-family="Mona Sans, Arial, sans-serif" font-size="24" text-anchor="middle"><text x="106.8" y="86">x</text><text x="793.2" y="86">x</text><text x="106.8" y="230">x</text><text x="793.2" y="230">x</text></g>
 <image href="{LOGO_BLACK}" x="130" y="101" width="640" height="97.55"/>
 </svg>"""
 
@@ -1002,7 +1001,7 @@ bk_body = f"""<main id="main" class="bk">
 <section class="section tight"><div class="wrap">
   {bk_head("typography", "07", "Typography", "Both typefaces are free under the SIL Open Font License. The logo itself is drawn artwork, so always use the files rather than typing the name in a font.")}
   <div class="bk-grid two">
-    <div class="bk-type"><p class="bk-type-a">Archivo</p><h3>Headings and interface</h3><p>Use a light weight and an expanded width for large headings. <a href="https://fonts.google.com/specimen/Archivo" rel="noopener">Get Archivo</a></p></div>
+    <div class="bk-type"><p class="bk-type-a">Mona Sans</p><h3>Headings and interface</h3><p>Use a light weight and an expanded width for large headings. <a href="https://fonts.google.com/specimen/Mona+Sans" rel="noopener">Get Mona Sans</a></p></div>
     <div class="bk-type"><p class="bk-type-n">Newsreader</p><h3>Reading text</h3><p>Use a regular weight for paragraphs and longer articles. <a href="https://fonts.google.com/specimen/Newsreader" rel="noopener">Get Newsreader</a></p></div>
   </div>
 </div></section>
