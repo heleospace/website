@@ -133,7 +133,7 @@ def footer():
         <p>Orbital data centers, run as an autonomous economy.</p>
       </div>
       <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
-      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/heleo-1/model/" target="_blank" rel="noopener">Heleo-1 3D model</a></li><li><a href="/heleo-1/launch/" target="_blank" rel="noopener">Heleo-1 launch</a></li></ul></div>
+      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/heleo-1/model/" target="_blank" rel="noopener">HELEO-1 Orbital DC</a></li><li><a href="/heleo-1/launch/" target="_blank" rel="noopener">HELEO-1 launch</a></li></ul></div>
       <div><h4>Research</h4><ul>{FIELDS_LINKS}</ul></div>
       <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul>{SOCIAL_LINKS}<li><a href="{GITHUB_URL}" rel="noopener">GitHub</a></li><li><a href="mailto:{CONTACT}">{CONTACT}</a></li></ul></div>
