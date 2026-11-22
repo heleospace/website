@@ -295,7 +295,7 @@ add(s1,new THREE.CylinderGeometry(.95,.95,.14,48),std(0x6d7176,.7,.35),.82);
 add(s1,new THREE.BoxGeometry(.12,16,.14),std(0x24262a,.3,.6),9.6,.0,.95);
 add(s1,new THREE.CylinderGeometry(.92,.92,.08,48),std(0x8a8d90,.7,.3),18);
 const inter=add(s1,new THREE.CylinderGeometry(.91,.91,2.2,48,1,true),interM,19.1);
-/* Heleospace mark above HELEO, set vertically on the first stage (two opposite sides, clear of the cable raceway) */
+/* Heleospace mark above HELEO in stacked upright letters, on the first stage (two opposite sides, clear of the cable raceway) */
 const MARK='<svg xmlns="http://www.w3.org/2000/svg" viewBox="41 253 208 208"><g transform="matrix(1.037528,0,0,1.037528,-105.184119,-422.706195)"> <path d="M341.402,669L341.402,834C341.402,843.611 333.611,851.402 324,851.402L159,851.402C149.389,851.402 141.598,843.611 141.598,834L141.598,669C141.598,659.389 149.389,651.598 159,651.598L324,651.598C333.611,651.598 341.402,659.389 341.402,669ZM306.598,707.535L306.598,686.402L176.402,686.402L176.402,756.082L306.598,707.535ZM176.402,793.228L176.402,816.598L306.598,816.598L306.598,744.68L176.402,793.228Z" style="fill:white;"/> </g></svg>';
 {const DW=240,DH=2400,ARC=1.25,DECH=11.5;
 const dcv=document.createElement('canvas');dcv.width=DW;dcv.height=DH;
@@ -303,9 +303,8 @@ const dTex=new THREE.CanvasTexture(dcv);dTex.colorSpace=THREE.SRGBColorSpace;dTe
 const im=new Image();
 const drawDecal=()=>{const g=dcv.getContext('2d');g.clearRect(0,0,DW,DH);
   const ms=170;if(im.complete&&im.naturalWidth)g.drawImage(im,(DW-ms)/2,40,ms,ms);
-  g.save();g.translate(DW/2,40+ms+70);g.rotate(Math.PI/2);g.fillStyle='#f1efe8';
-  g.font='600 185px Hanken Grotesk, sans-serif';g.textBaseline='middle';
-  if('letterSpacing' in g)g.letterSpacing='22px';g.fillText('HELEO',0,0);g.restore();dTex.needsUpdate=true;};
+  g.fillStyle='#f1efe8';g.font='600 150px Hanken Grotesk, sans-serif';g.textAlign='center';g.textBaseline='middle';
+  [...'HELEO'].forEach((c,i)=>g.fillText(c,DW/2,40+ms+130+i*175));dTex.needsUpdate=true;};
 im.onload=()=>{drawDecal();document.fonts&&document.fonts.ready.then(drawDecal);};
 im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(MARK);
 const dMat=new THREE.MeshStandardMaterial({map:dTex,transparent:true,alphaTest:.3,metalness:.1,roughness:.55,polygonOffset:true,polygonOffsetFactor:-2});
