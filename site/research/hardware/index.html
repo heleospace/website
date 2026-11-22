@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-root="/" data-ga="G-WWS90D42NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chips & space hardware · Research · Heleospace</title>
+<meta name="description" content="Find out how processors, memory and space hardware behave in real orbit: radiation, heat and power, measured on Heleo-1.">
+<link rel="canonical" href="https://heleo.space/research/hardware/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Heleospace">
+<meta property="og:title" content="Chips & space hardware · Research · Heleospace">
+<meta property="og:description" content="Find out how processors, memory and space hardware behave in real orbit: radiation, heat and power, measured on Heleo-1.">
+<meta property="og:url" content="https://heleo.space/research/hardware/">
+<meta property="og:image" content="https://heleo.space/assets/img/og-image.png">
+<meta property="og:image:secure_url" content="https://heleo.space/assets/img/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Heleospace">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Chips & space hardware · Research · Heleospace">
+<meta name="twitter:description" content="Find out how processors, memory and space hardware behave in real orbit: radiation, heat and power, measured on Heleo-1.">
+<meta name="twitter:image" content="https://heleo.space/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07080A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Heleospace home"><svg class="logo" viewBox="0 0 1429.45 217.87" aria-hidden="true"><use href="/assets/img/logo-sprite.svg#logo"/></svg></a>
+    <nav class="nav" aria-label="Main"><div class="nav-group"><button type="button" class="nav-top" aria-expanded="false" aria-controls="sub-0">Technology<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="nav-sub" id="sub-0"><a href="/agents/"><b>Agents</b><span>Deploy an AI agent in minutes</span></a><a href="/mesh/"><b>Autonomous Mesh</b><span>Open software that routes and settles work</span></a><a href="/machines/"><b>Machine economy</b><span>Robots and fleets that buy and sell compute</span></a><a href="/technology/"><b>Heleo-1</b><span>A data center redesigned for orbit</span></a></div></div><div class="nav-group is-active"><button type="button" class="nav-top" aria-expanded="false" aria-controls="sub-1">Research<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="nav-sub" id="sub-1"><a href="/research/heleo/"><b>Our R&amp;D</b><span>Five Year 1 workstreams with labs</span></a><a href="/research/"><b>Research</b><span>Compute on Earth, access to orbit</span></a><a href="/research/ai/"><b>AI &amp; model training</b><span>Train and run models on the Mesh</span></a><a href="/research/earth/"><b>Earth &amp; climate</b><span>Process orbital data where it is captured</span></a><a href="/research/hardware/" aria-current="page"><b>Chips &amp; space hardware</b><span>Test hardware in real orbit</span></a><a href="/research/networks/"><b>Networks &amp; autonomy</b><span>Links and agents from ground to orbit</span></a><a href="/research/engineering/"><b>Engineering &amp; simulation</b><span>Heavy simulation, on demand</span></a></div></div><div class="nav-group"><button type="button" class="nav-top" aria-expanded="false" aria-controls="sub-2">Company<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="nav-sub" id="sub-2"><a href="/about/"><b>About</b><span>Why we exist and how we work</span></a><a href="/roadmap/"><b>Roadmap</b><span>From the ground mesh to orbit</span></a></div></div><a class="nav-top" href="/updates/">Updates</a><a class="nav-top nav-contact" href="/contact/">Contact</a></nav>
+    <a class="btn header-cta" href="/contact/">Contact</a>
+    <button class="menu-btn" aria-expanded="false" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+<section class="page-hero on-night">
+  <img class="bg" src="https://www.nasa.gov/wp-content/uploads/2023/03/iss065e049854-1.jpg" alt="" fetchpriority="high">
+  <div class="wrap">
+    <p class="eyebrow">Research · Field 03</p>
+    <h1 class="display">Space is the hardest test lab there is</h1>
+    <p class="lede">Beam tests and vacuum chambers predict how hardware behaves in space. Heleo-1 is designed to show how it actually does, over years, in a real orbit.</p>
+  </div>
+  <span class="credit">Station solar arrays across Earth's horizon · NASA</span>
+</section>
+<main id="main" class="article">
+  <article>
+    <div class="body">
+<h2 id="overview">Overview</h2>
+<p>Commercial chips are fast and cheap, but nobody knows exactly how long they last in orbit until they fly. Ground tests narrow the question; flight data answers it. Heleo-1 is planned to carry commercial compute modules in a dawn-dusk orbit at about 550 km and to record how they behave, every day of the mission.</p>
+<p>This is also the core of our own research. Our Year 1 workstreams on radiation, shielding and thermal-vacuum testing build the ground results that Heleo-1 will check in flight. <a class="link" href="/research/heleo/">See our R&amp;D</a>.</p>
+<h2 id="what">What you can do</h2>
+<div class="cols c2"><div class="col"><h3>Radiation and fault behaviour</h3><p>Measure error rates, latch-ups and recovery for processors and memory, and compare flight data with beam-test predictions.</p></div><div class="col"><h3>Thermal and power studies</h3><p>Study efficiency and heat limits in vacuum, where heat can only leave as radiation.</p></div><div class="col"><h3>Open orbital telemetry</h3><p>Datasets of temperatures, power and error counts from Heleo-1, to be published for research.</p></div><div class="col"><h3>Hosted experiment slots</h3><p>Fly a small experiment on a Heleospace mission. By invitation, for partner labs.</p></div></div>
+<h2 id="questions">Research questions we want to help answer</h2>
+<ol><li>How well do beam-test results predict the error rates commercial chips actually see in orbit?</li><li>How does memory degrade over a multi-year mission, and how early can software detect it?</li><li>How much compute can a radiator carry away at high density, and how should work be scheduled around it?</li><li>What do software fault mitigations cost in speed and energy, and when are they worth it?</li><li>Which shielding gives the best protection per kilogram for a given chip?</li></ol>
+<h2 id="how">How a project runs</h2>
+<p>Every project starts on the ground and moves to orbit only when it is ready. You keep the same code and the same account at every stage.</p>
+<div class="table-wrap"><table><tr><th>Stage</th><th>Status</th><th>What happens</th></tr><tr><td><strong>1. Ground mesh</strong></td><td>Available now</td><td>Analyse published results from our lab workstreams and run fault-injection studies on ground nodes.</td></tr><tr><td><strong>2. Heleo-1 ground twin</strong></td><td>Planned</td><td>Test your software or fault mitigations on a testbed that mirrors the Heleo-1 compute pod.</td></tr><tr><td><strong>3. Heleo-1 in orbit</strong></td><td>Planned</td><td>Run your code on Heleo-1, use its telemetry, or fly a hosted experiment by invitation.</td></tr></table></div>
+<p class="note">Orbital access and hosted experiments are planned and subject to mission approval, licensing and export rules.</p>
+<h2 id="together">What we provide, what you bring</h2>
+<div class="cols c2">
+  <div class="col"><h3>We provide</h3><ul><li>Ground testbeds and fault-injection tools</li><li>Access to the Heleo-1 ground twin</li><li>Orbital telemetry datasets from Heleo-1</li><li>Engineering support for hosted experiments</li></ul></div>
+  <div class="col"><h3>You bring</h3><ul><li>Hardware or software you want to test</li><li>A test plan with clear measurements</li><li>Beam-test or thermal-vacuum capability, if you have it</li><li>A plan to publish the results</li></ul></div>
+</div>
+<p>Your team leads the work, owns its data and keeps the credit. Results that use Heleo Mesh or Heleo-1 are shared and cited, so the whole field moves faster.</p>
+<h2 id="apply">Apply</h2>
+<p>Tell us about your lab, your question and what you want to run, on the ground or in orbit. Labs with beam-test, thermal-vacuum or chip-design capability are especially welcome.</p>
+<p>Other fields: <a href="/research/ai/">AI &amp; model training</a> · <a href="/research/earth/">Earth &amp; climate</a> · <a href="/research/networks/">Networks &amp; autonomy</a> · <a href="/research/engineering/">Engineering &amp; simulation</a>.</p>
+</div>
+    <div class="cta"><a class="btn primary" href="/contact/?topic=research"><span class="arrow">Apply for research access</span></a><a class="btn" href="/research/">All research</a></div>
+    <p class="meta">Last updated 22 November 2026</p>
+  </article>
+  <nav class="rail" aria-label="On this page"><h4>On this page</h4><a href="#overview">Overview</a><a href="#what">What you can do</a><a href="#questions">Questions</a><a href="#how">How a project runs</a><a href="#together">Provide and bring</a><a href="#apply">Apply</a></nav>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="Heleospace home"><svg class="logo" viewBox="0 0 1429.45 217.87" aria-hidden="true"><use href="/assets/img/logo-sprite.svg#logo"/></svg></a>
+        <p>Orbital data centers, run as an autonomous economy.</p>
+      </div>
+      <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="/roadmap/">Roadmap</a></li><li><a href="/updates/">Updates</a></li><li><a href="/contact/">Contact</a></li><li><a href="/brand/">Brand kit</a></li></ul></div>
+      <div><h4>Technology</h4><ul><li><a href="/agents/">Agents</a></li><li><a href="/mesh/">Autonomous Mesh</a></li><li><a href="/machines/">Machine economy</a></li><li><a href="/technology/">Heleo-1</a></li><li><a href="/heleo-1/model/" target="_blank" rel="noopener">Heleo-1 3D model</a></li><li><a href="/heleo-1/launch/" target="_blank" rel="noopener">Heleo-1 launch</a></li></ul></div>
+      <div><h4>Research</h4><ul><li><a href="/research/heleo/">Our R&amp;D</a></li><li><a href="/research/">Research</a></li><li><a href="/research/ai/">AI &amp; model training</a></li><li><a href="/research/earth/">Earth &amp; climate</a></li><li><a href="/research/hardware/">Chips &amp; space hardware</a></li><li><a href="/research/networks/">Networks &amp; autonomy</a></li><li><a href="/research/engineering/">Engineering &amp; simulation</a></li></ul></div>
+      <div><h4>Work with us</h4><ul><li><a href="/contact/?topic=research">Research labs</a></li><li><a href="/contact/?topic=partner">Partners</a></li><li><a href="/contact/?topic=careers">Careers</a></li><li><a href="/contact/?topic=investor">Investors</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="https://github.com/heleospace/" rel="noopener">GitHub</a></li><li><a href="mailto:hello@heleo.space">hello@heleo.space</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span data-year>2026</span> Heleospace LLC. Heleospace Inc. is planned. Information on this site is not an offer to sell or a solicitation of an offer to buy any security. Plans and figures describe research and targets, not promises.</p>
+      <p><a href="/legal/">Legal &amp; privacy</a> · <a href="/legal/#cookies">Cookies</a> · <a href="#" data-cookie-settings>Cookie settings</a> · <a href="/credits/">Image credits</a></p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
